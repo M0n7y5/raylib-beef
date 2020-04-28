@@ -1,0 +1,25 @@
+FileVersion = 1
+
+[Project]
+Name = "raylib-beef"
+TargetType = "BeefLib"
+StartupObject = "Program"
+DefaultNamespace = "raylib_beef"
+
+[Configs.Debug.Win64]
+BeefLibType = "DynamicDebug"
+LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Debug.Win32]
+BeefLibType = "DynamicDebug"
+LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/*.dll\")"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+
+[Configs.Release.Win32]
+LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/*.dll\")"]
