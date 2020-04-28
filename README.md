@@ -1,6 +1,6 @@
 ![](img/raylib-beef-logo.png)
 # Raylib-Beef
-**raylib-beef** is a Beef wrapper library for **Raylib**, a simple and easy-to-use library. In combination with benefits of Beef programming language, making games is pure satisfaction!
+**raylib-beef** is a Beef wrapper library for **Raylib 3.0**, a simple and easy-to-use library. In combination with benefits of Beef programming language, making games is pure satisfaction!
 
 > **Attention!** This binding is still in development. Bugs may occur.
 
@@ -27,7 +27,7 @@
 using raylib_beef;
 using System;
 
-namespace raylib_start
+namespace NAMESPACE_OF_YOUR_PROJECT_HERE
 {
 	public static class Program : Raylib
 	{
@@ -58,6 +58,18 @@ namespace raylib_start
 }
 ```
 4. Profit!
+
+## Tip & Tricks
+1. You should make your workspace looks like this
+```
+Root-Folder\
+    |__ Project1
+    |__ Project2
+    |__ Project3
+    |__ raylib-beef
+    |__ some-other-lib
+```
+
 # More Info
 - More info about **raylib** (https://github.com/raysan5/raylib)
 - More info about **BeefLang** (https://www.beeflang.org)
