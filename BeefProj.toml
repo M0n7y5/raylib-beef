@@ -8,18 +8,18 @@ DefaultNamespace = "raylib_beef"
 
 [Configs.Debug.Win64]
 BeefLibType = "DynamicDebug"
-LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+LibPaths = ["$(ProjectDir)/dist/x64/Debug/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/Debug/*.dll\")"]
 
 [Configs.Debug.Win32]
 BeefLibType = "DynamicDebug"
-LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/*.dll\")"]
+LibPaths = ["$(ProjectDir)/dist/x86/Debug/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/Debug/*.dll\")"]
 
 [Configs.Release.Win64]
-LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/*.dll\")"]
+LibPaths = ["$(ProjectDir)/dist/x64/Release/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64/Release/*.dll\")"]
 
 [Configs.Release.Win32]
-LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
-PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/*.dll\")"]
+LibPaths = ["$(ProjectDir)/dist/x86/Release/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86/Release/*.dll\")"]
