@@ -20,9 +20,10 @@
 
 
 # Quick Start *(using Beef IDE)*
-1. **Download** raylib-beef and add it to your workspace
-2. **Make** raylib-beef **as a dependency** of your project 
-3. Write some code:
+1. **Download** raylib-beef and copy it here: **C:\Program Files\BeefLang\BeefLibs**
+2. Right-click on your workspace and select **Add from Installed** and choose raylib-beef
+3. **Make** raylib-beef **as a dependency** of your project 
+4. Write some code:
 ```csharp
 using raylib_beef;
 using System;
@@ -57,17 +58,17 @@ namespace NAMESPACE_OF_YOUR_PROJECT_HERE
 	}
 }
 ```
-4. Profit!
+5. Profit!
 
 ## Tip & Tricks
 1. You should make your workspace looks like this
 ```
-Root-Folder\
-    |__ Project1
-    |__ Project2
-    |__ Project3
-    |__ raylib-beef
-    |__ some-other-lib
+Workspace-Folder\
+    |__ Project1\ 
+    |__ Project2\
+    |__ Project3\
+    |__ raylib-beef\
+    |__ some-other-lib\
 ```
 
 # More Info
