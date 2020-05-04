@@ -2,7 +2,7 @@ namespace raylib_beef.Enums
 {
 	// Gestures type
 	// NOTE: It could be used as flags to enable only some gestures
-	public enum GestureType	: int
+	public enum GestureType	: int32
 	{
 	    GESTURE_NONE        = 0,
 	    GESTURE_TAP         = 1,

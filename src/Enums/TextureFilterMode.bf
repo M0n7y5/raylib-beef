@@ -3,7 +3,7 @@ namespace raylib_beef.Enums
 	// Texture parameters: filter mode
 	// NOTE 1: Filtering considers mipmaps if available in the texture
 	// NOTE 2: Filter is accordingly set for minification and magnification
-	public enum TextureFilterMode : int
+	public enum TextureFilterMode : int32
 	{
 	    FILTER_POINT = 0,               // No filter, just pixel aproximation
 	    FILTER_BILINEAR,                // Linear filtering

@@ -4,8 +4,8 @@ namespace raylib_beef.Types
 	[CRepr]
 	public struct VrDeviceInfo
 	{
-		public int hResolution;// HMD horizontal resolution in pixels
-		public int vResolution;// HMD vertical resolution in pixels
+		public int32 hResolution;// HMD horizontal resolution in pixels
+		public int32 vResolution;// HMD vertical resolution in pixels
 		public float hScreenSize;// HMD horizontal size in meters
 		public float vScreenSize;// HMD vertical size in meters
 		public float vScreenCenter;// HMD screen center in meters

@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Material map type
-	public enum MaterialMapType	: int
+	public enum MaterialMapType	: int32
 	{
 		MAP_ALBEDO		= 0,	// MAP_DIFFUSE
 		MAP_METALNESS 	= 1,	// MAP_SPECULAR

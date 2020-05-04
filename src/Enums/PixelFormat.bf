@@ -2,7 +2,7 @@ namespace raylib_beef.Enums
 {
 	// Pixel formats
 	// NOTE: Support depends on OpenGL version and platform
-	public enum PixelFormat	: int
+	public enum PixelFormat	: int32
 	{
 	    UNCOMPRESSED_GRAYSCALE = 1,     // 8 bit per pixel (no alpha)
 	    UNCOMPRESSED_GRAY_ALPHA,        // 8*2 bpp (2 channels)

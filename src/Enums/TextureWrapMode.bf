@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Texture parameters: wrap mode
-	public enum TextureWrapMode	: int
+	public enum TextureWrapMode	: int32
 	{
 	    WRAP_REPEAT = 0,        // Repeats texture in tiled mode
 	    WRAP_CLAMP,             // Clamps texture to edge pixel in tiled mode

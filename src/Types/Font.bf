@@ -4,8 +4,8 @@ namespace raylib_beef.Types
 	[CRepr]
 	public struct Font
 	{
-		public int baseSize;// Base size (default chars height)
-		public int charsCount;// Number of characters
+		public int32 baseSize;// Base size (default chars height)
+		public int32 charsCount;// Number of characters
 		public Texture2D texture;// Font texture
 
 		// recs refers to a Rectangle *

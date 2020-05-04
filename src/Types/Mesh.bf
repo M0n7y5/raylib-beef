@@ -4,8 +4,8 @@ namespace raylib_beef.Types
 	[CRepr]
 	public struct Mesh
 	{
-		public int vertexCount;// Number of vertices stored in arrays
-		public int triangleCount;// Number of triangles stored (indexed or not)
+		public int32 vertexCount;// Number of vertices stored in arrays
+		public int32 triangleCount;// Number of triangles stored (indexed or not)
 
 		// Default vertex data
 		// vertices refers to a float *
@@ -35,15 +35,15 @@ namespace raylib_beef.Types
 		public float* animNormals;// Animated normals (after bones transformations)
 
 		// vertices refers to a int *
-		public int* boneIds;// Vertex bone ids, up to 4 bones influence by vertex (skinning)
+		public int32* boneIds;// Vertex bone ids, up to 4 bones influence by vertex (skinning)
 
 		// boneWeights refers to a float *
 		public float* boneWeights;// Vertex bone weight, up to 4 bones influence by vertex (skinning)
 
 		// OpenGL identifiers
-		public uint vaoId;// OpenGL Vertex Array Object id
+		public uint32 vaoId;// OpenGL Vertex Array Object id
 
 		// vboId refers to a uint[]
-		public int* vboId;// OpenGL Vertex Buffer Objects id (default vertex data)
+		public int32* vboId;// OpenGL Vertex Buffer Objects id (default vertex data)
 	}
 }

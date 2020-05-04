@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Gamepad Buttons
-	public enum GamepadButton : int
+	public enum GamepadButton : int32
 	{
 		// This is here just for error checking
 		GAMEPAD_BUTTON_UNKNOWN = 0,

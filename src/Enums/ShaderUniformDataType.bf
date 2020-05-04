@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Shader uniform data types
-	public enum ShaderUniformDataType : int
+	public enum ShaderUniformDataType : int32
 	{
 		UNIFORM_FLOAT = 0,
 		UNIFORM_VEC2,

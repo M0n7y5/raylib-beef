@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Android buttons
-	public enum AndroidButton : int
+	public enum AndroidButton : int32
 	{
 		KEY_BACK = 4,
 		KEY_MENU = 82,

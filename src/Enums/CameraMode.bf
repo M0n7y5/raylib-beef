@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Camera system modes
-	public enum CameraMode : int
+	public enum CameraMode : int32
 	{
 		CAMERA_CUSTOM = 0,
 		CAMERA_FREE,

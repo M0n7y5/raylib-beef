@@ -1,6 +1,6 @@
 namespace raylib_beef.Enums
 {
-	public enum GamepadAxis	: int
+	public enum GamepadAxis	: int32
 	{
 	    // This is here just for error checking
 	    GAMEPAD_AXIS_UNKNOWN = 0,

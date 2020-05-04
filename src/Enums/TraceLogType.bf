@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Trace log type
-	public enum TraceLogType : int
+	public enum TraceLogType : int32
 	{
 		LOG_ALL = 0,	// Display all logs
 		LOG_TRACE,

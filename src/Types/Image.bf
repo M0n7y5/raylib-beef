@@ -6,9 +6,9 @@ namespace raylib_beef.Types
 	{
 		// data refers to a void *
 		public void* data;// Image raw data
-		public int width;// Image base width
-		public int height;// Image base height
-		public int mipmaps;// Mipmap levels, 1 by default
-		public int format;// Data format (PixelFormat type)
+		public int32 width;// Image base width
+		public int32 height;// Image base height
+		public int32 mipmaps;// Mipmap levels, 1 by default
+		public int32 format;// Data format (PixelFormat type)
 	}
 }

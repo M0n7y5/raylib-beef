@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Shader location point type
-	public enum ShaderLocationIndex	: int
+	public enum ShaderLocationIndex	: int32
 	{
 		LOC_VERTEX_POSITION = 0,
 		LOC_VERTEX_TEXCOORD01,

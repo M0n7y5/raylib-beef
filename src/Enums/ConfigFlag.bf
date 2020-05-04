@@ -1,6 +1,6 @@
 namespace raylib_beef.Enums
 {
-	public enum ConfigFlag : int
+	public enum ConfigFlag : int32
 	{
 	    FLAG_RESERVED           = 1,    // Reserved
 	    FLAG_FULLSCREEN_MODE    = 2,    // Set to run program in fullscreen

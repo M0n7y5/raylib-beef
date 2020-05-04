@@ -1,7 +1,7 @@
 namespace raylib_beef.Enums
 {
 	// Keyboard keys
-	public enum KeyboardKey : int
+	public enum KeyboardKey : int32
 	{
 		// Alphanumeric keys
 		KEY_APOSTROPHE = 39,

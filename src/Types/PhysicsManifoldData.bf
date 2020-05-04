@@ -4,7 +4,7 @@ namespace raylib_beef.Types
 	[CRepr]
 	public struct PhysicsManifoldData
 	{
-		public uint id;// Reference unique identifier
+		public uint32 id;// Reference unique identifier
 		public PhysicsBodyData* bodyA;// Manifold first physics body reference
 		public PhysicsBodyData* bodyB;// Manifold second physics body reference
 		public float penetration;// Depth of penetration from collision
