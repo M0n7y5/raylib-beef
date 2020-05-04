@@ -3,17 +3,18 @@
 **raylib-beef** is a Beef wrapper library for **Raylib 3.0**, a simple and easy-to-use library. In combination with benefits of Beef programming language, making games is pure satisfaction!
 
 > **Attention!** This binding is still in development. Bugs may occur.
+	Binaries are removed from repo. You can download this library with binaries from [Release page](https://github.com/M0n7y5/raylib-beef/releases)!
 
 ## What is done
 - Bindings for:
     - raylib.h
     - raymath.h
     - rlgl.h
+	- Physac.h - *Warning! Symbols are not included in released binary!*
+	- Easings.h
 
 ## TODO:
 - Make bindings for other header files:
-    - easings.h
-    - physac.h
     - raygui.h
 - Rewrite examples to Beef
 - Make higher abstraction for raylib-beef (RayApp)(??)
