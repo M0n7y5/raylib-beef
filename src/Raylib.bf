@@ -582,10 +582,10 @@ namespace raylib_beef
 		public static extern void DrawRectangleLinesEx(Rectangle rec, int lineThick, Color color);
 		// // Draw rectangle with rounded edges
 		[CLink]
-		public static extern void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color);
+		public static extern void DrawRectangleRounded(Rectangle rec, float roundness, int32 segments, Color color);
 		// // Draw rectangle with rounded edges outline
 		[CLink]
-		public static extern void DrawRectangleRoundedLines(Rectangle rec, float roundness, int segments, int lineThick, Color color);
+		public static extern void DrawRectangleRoundedLines(Rectangle rec, float roundness, int32 segments, int lineThick, Color color);
 		// // Draw a color-filled triangle (vertex in counter-clockwise order!)
 		[CLink]
 		public static extern void DrawTriangle(Vector2 v1, Vector2 v2, Vector2 v3, Color color);

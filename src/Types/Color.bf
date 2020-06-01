@@ -46,10 +46,5 @@ namespace raylib_beef.Types
 			this.b = b;
 			this.a = a;
 		}
-
-		public String ToString()
-		{
-			return new String..AppendF("{} {} {} {}", r, g, b, a);
-		}
 	}
 }
