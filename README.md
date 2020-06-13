@@ -61,17 +61,6 @@ namespace NAMESPACE_OF_YOUR_PROJECT_HERE
 ```
 5. Profit!
 
-## Tip & Tricks
-1. You should make your workspace looks like this
-```
-Workspace-Folder\
-    |__ Project1\ 
-    |__ Project2\
-    |__ Project3\
-    |__ raylib-beef\
-    |__ some-other-lib\
-```
-
 # More Info
 - More info about **raylib** (https://github.com/raysan5/raylib)
 - More info about **BeefLang** (https://www.beeflang.org)
