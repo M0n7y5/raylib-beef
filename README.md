@@ -1,10 +1,13 @@
 <img align="left" src="https://raw.githubusercontent.com/M0n7y5/raylib-beef/master/img/raylib-beef-logo.png" width=256 >
 
+# Raylib-Beef
+
 **raylib-beef** is a Beef wrapper library for **Raylib 3.0**, a simple and easy-to-use library. In combination with benefits of Beef programming language, making games is pure satisfaction!
 
 > **Attention!** This binding is still in development. Bugs may occur.
 	Binaries are removed from repo. You can download this library with binaries from [Release page](https://github.com/M0n7y5/raylib-beef/releases)!
 
+<br>
 <br>
 
 ## What is done
