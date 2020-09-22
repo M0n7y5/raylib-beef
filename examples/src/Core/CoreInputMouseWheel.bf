@@ -14,7 +14,7 @@ namespace raylib_beef.examples.Core
 			InitWindow(screenWidth, screenHeight, "raylib [core] example - input mouse wheel");
 			defer CloseWindow();
 
-			int boxPositionY = screenHeight/2 - 40;
+			int32 boxPositionY = screenHeight/2 - 40;
 			let scrollSpeed = 4;
 
 			SetTargetFPS(60);
@@ -24,7 +24,7 @@ namespace raylib_beef.examples.Core
 
 				Update:
 				{
-					boxPositionY -= (GetMouseWheelMove()*scrollSpeed);
+					boxPositionY -= ((int32)GetMouseWheelMove()*scrollSpeed);
 				}
 				
 				Draw:
@@ -38,7 +38,10 @@ namespace raylib_beef.examples.Core
 
 					DrawText("Use the mouse wheel to move the cube up and down!", 10, 10, 20, .GRAY);
 
-					var positionInfo = (scope String("")..AppendF("Box position Y: {}", boxPositionY));
+					// had to make boxPositionY an int32 instead of int (which is really int64 on my system)
+					// otherwise, really weird numbers were printed here
+					var positionInfo = (scope String()..AppendF("Box position Y: {}", boxPositionY));
+
 					// TextFormat() seems not to do anything in Beef -> deleted
 					DrawText(positionInfo.CStr(), 10, 40, 20, .LIGHTGRAY);
 				}
