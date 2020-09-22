@@ -1,0 +1,14 @@
+FileVersion = 1
+Dependencies = {corlib = "*", raylib-beef = "*"}
+
+[Project]
+Name = "examples"
+TargetType = "BeefGUIApplication"
+StartupObject = "raylib_beef.examples.Core.Program"
+DefaultNamespace = "raylib_beef.examples"
+
+[Configs.Debug.Win64]
+PostBuildCmds = ["CopyFilesIfNewer(\"$(ProjectDir)/resources\", \"$(TargetDir)/resources\")"]
+
+[Configs.Release.Win64]
+PostBuildCmds = ["CopyFilesIfNewer(\"$(ProjectDir)/resources\", \"$(TargetDir)/resources\")"]
