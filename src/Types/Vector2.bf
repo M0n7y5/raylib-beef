@@ -45,7 +45,7 @@ namespace raylib_beef.Types
 		{
 			return (v1.x == v2.x && v1.y == v2.y);
 		}
-		
+
 		public static bool operator!=(Vector2 v1, Vector2 v2)
 		{
 			return !(v1 == v2);
@@ -64,6 +64,11 @@ namespace raylib_beef.Types
 		public static Vector2 operator+(Vector2 v1, Vector2 v2)
 		{
 			return Raymath.Vector2Add(v1, v2);
+		}
+
+		public static Vector2 operator+(Vector2 v1, float v2)
+		{
+			return .(v1.x + v2, v1.y + v2);
 		}
 
 		public static Vector2 operator-(Vector2 v1, Vector2 v2)

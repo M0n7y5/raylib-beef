@@ -1,6 +1,7 @@
 using System;
 using raylib_beef.Enums;
 using raylib_beef.Types;
+using System.Interop;
 namespace raylib_beef
 {
 	public class Raylib
@@ -20,7 +21,7 @@ namespace raylib_beef
 
 
 		// // Callback delegate used in SetTraceLogCallback to allow for custom logging
-		public delegate void TraceLogCallback(TraceLogType logType, char8* text, void* args);
+		public function void TraceLogCallback(TraceLogType logType, char8* text, void* args);
 
 
 
@@ -32,7 +33,7 @@ namespace raylib_beef
 
 		// Initialize window and OpenGL context
 		[CLink]
-		public static extern void InitWindow(int width, int height, char8* title);
+		public static extern void InitWindow(c_int width, c_int height, char8* title);
 		// // Check if KEY_ESCAPE pressed or Close icon pressed
 		[CLink]
 		public static extern bool WindowShouldClose();
@@ -71,40 +72,40 @@ namespace raylib_beef
 		public static extern void SetWindowTitle(char8* title);
 		// // Set window position on screen (only PLATFORM_DESKTOP)
 		[CLink]
-		public static extern void SetWindowPosition(int x, int y);
+		public static extern void SetWindowPosition(c_int x, c_int y);
 		// // Set monitor for the current window (fullscreen mode)
 		[CLink]
-		public static extern void SetWindowMonitor(int monitor);
+		public static extern void SetWindowMonitor(c_int monitor);
 		// // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
 		[CLink]
-		public static extern void SetWindowMinSize(int width, int height);
+		public static extern void SetWindowMinSize(c_int width, c_int height);
 		// // Set window dimensions
 		[CLink]
-		public static extern void SetWindowSize(int width, int height);
+		public static extern void SetWindowSize(c_int width, c_int height);
 		// // Get native window handle IntPtr refers to a void *
 		[CLink]
 		public static extern void* GetWindowHandle();
 		// // Get current screen width
 		[CLink]
-		public static extern int GetScreenWidth();
+		public static extern c_int GetScreenWidth();
 		// // Get current screen height
 		[CLink]
-		public static extern int GetScreenHeight();
+		public static extern c_int GetScreenHeight();
 		// // Get number of connected monitors
 		[CLink]
-		public static extern int GetMonitorCount();
+		public static extern c_int GetMonitorCount();
 		// // Get primary monitor width
 		[CLink]
-		public static extern int GetMonitorWidth(int monitor);
+		public static extern c_int GetMonitorWidth(c_int monitor);
 		// // Get primary monitor height
 		[CLink]
-		public static extern int GetMonitorHeight(int monitor);
+		public static extern c_int GetMonitorHeight(c_int monitor);
 		// // Get primary monitor physical width in millimetres
 		[CLink]
-		public static extern int GetMonitorPhysicalWidth(int monitor);
+		public static extern c_int GetMonitorPhysicalWidth(c_int monitor);
 		// // Get primary monitor physical height in millimetres
 		[CLink]
-		public static extern int GetMonitorPhysicalHeight(int monitor);
+		public static extern c_int GetMonitorPhysicalHeight(c_int monitor);
 		// // Get window position XY on monitor
 		[CLink]
 		public static extern Vector2 GetWindowPosition();
@@ -113,7 +114,7 @@ namespace raylib_beef
 		public static extern Vector2 GetWindowScaleDPI();
 		// // Get the human-readable, UTF-8 encoded name of the primary monitor
 		[CLink]
-		public static extern char8* GetMonitorName(int monitor);
+		public static extern char8* GetMonitorName(c_int monitor);
 		// // Get clipboard text content
 		[CLink]
 		public static extern char8* GetClipboardText();
@@ -170,7 +171,7 @@ namespace raylib_beef
 		public static extern void EndTextureMode();
 		// // Begin scissor mode (define screen area for following drawing)
 		[CLink]
-		public static extern void BeginScissorMode(int x, int y, int width, int height);
+		public static extern void BeginScissorMode(c_int x, c_int y, c_int width, c_int height);
 		// // End scissor mode
 		[CLink]
 		public static extern void EndScissorMode();
@@ -191,7 +192,7 @@ namespace raylib_beef
 		public static extern Vector2 GetWorldToScreen(Vector3 position, Camera3D camera);
 		// // Returns size position for a 3d world space position
 		[CLink]
-		public static extern Vector2 GetWorldToScreenEx(Vector3 position, Camera3D camera, int width, int height);
+		public static extern Vector2 GetWorldToScreenEx(Vector3 position, Camera3D camera, c_int width, c_int height);
 		// // Returns the screen space position for a 2d camera world space position
 		[CLink]
 		public static extern Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);
@@ -203,10 +204,10 @@ namespace raylib_beef
 		// // Timing-related functions
 		// Set target FPS (maximum)
 		[CLink]
-		public static extern void SetTargetFPS(int fps);
+		public static extern void SetTargetFPS(c_int fps);
 		// // Returns current FPS
 		[CLink]
-		public static extern int GetFPS();
+		public static extern c_int GetFPS();
 		// // Returns time in seconds for last frame drawn
 		[CLink]
 		public static extern float GetFrameTime();
@@ -218,7 +219,7 @@ namespace raylib_beef
 		// // Color-related functions
 		// Returns hexadecimal value for a Color
 		[CLink]
-		public static extern int ColorToInt(Color color);
+		public static extern c_int ColorToInt(Color color);
 		// // Returns color normalized as float [0..1]
 		[CLink]
 		public static extern Vector4 ColorNormalize(Color color);
@@ -233,7 +234,7 @@ namespace raylib_beef
 		public static extern Color ColorFromHSV(Vector3 hsv);
 		// // Returns a Color struct from hexadecimal value
 		[CLink]
-		public static extern Color GetColor(int hexValue);
+		public static extern Color GetColor(c_int hexValue);
 		// // Color fade-in or fade-out, alpha goes from 0.0f to 1.0f
 		[CLink]
 		public static extern Color Fade(Color color, float alpha);
@@ -260,16 +261,16 @@ namespace raylib_beef
 		public static extern void TakeScreenshot(char8* fileName);
 		// // Returns a random value between min and max (both included)
 		[CLink]
-		public static extern int GetRandomValue(int min, int max);
+		public static extern c_int GetRandomValue(c_int min, c_int max);
 
 
 		// // Files management functions
 		// Load file data as byte array (read)
 		[CLink]
-		public static extern uint8* LoadFileData(char8* fileName, int* bytesRead);
+		public static extern uint8* LoadFileData(char8* fileName, c_int* bytesRead);
 		// // Save data to file from byte array (write)
 		[CLink]
-		public static extern void SaveFileData(char8* fileName, void* data, int bytesToWrite);
+		public static extern void SaveFileData(char8* fileName, void* data, c_int bytesToWrite);
 		// // Check if file exists
 		[CLink]
 		public static extern bool FileExists(char8* fileName);
@@ -299,7 +300,7 @@ namespace raylib_beef
 		public static extern char8* GetWorkingDirectory();
 		// // Get filenames in a directory path (memory should be freed)
 		[CLink]
-		public static extern char8** GetDirectoryFiles(char8* dirPath, int* count);
+		public static extern char8** GetDirectoryFiles(char8* dirPath, c_int* count);
 		// // Clear directory files paths buffers (free memory)
 		[CLink]
 		public static extern void ClearDirectoryFiles();
@@ -311,28 +312,28 @@ namespace raylib_beef
 		public static extern bool IsFileDropped();
 		// // Get dropped files names (memory should be freed)
 		[CLink]
-		public static extern char8** GetDroppedFiles(int* count);
+		public static extern char8** GetDroppedFiles(c_int* count);
 		// // Clear dropped files paths buffer (free memory)
 		[CLink]
 		public static extern void ClearDroppedFiles();
 		// // Get file modification time (last write time)
 		[CLink]
-		public static extern int GetFileModTime(char8* fileName);
+		public static extern c_int GetFileModTime(char8* fileName);
 		// // Compress data (DEFLATE algorithm)
 		[CLink]
-		public static extern uint8* CompressData(uint8* data, int dataLength, int* compDataLength);
+		public static extern uint8* CompressData(uint8* data, c_int dataLength, c_int* compDataLength);
 		// // Decompress data (DEFLATE algorithm)
 		[CLink]
-		public static extern uint8* DecompressData(uint8* compData, int compDataLength, int* dataLength);
+		public static extern uint8* DecompressData(uint8* compData, c_int compDataLength, c_int* dataLength);
 
 
 		// // Persistent storage management
 		// Save integer value to storage file (to defined position)
 		[CLink]
-		public static extern void StorageSaveValue(int position, int value);
+		public static extern void StorageSaveValue(c_int position, c_int value);
 		// // Load integer value from storage file (from defined position)
 		[CLink]
-		public static extern int StorageLoadValue(int position);
+		public static extern c_int StorageLoadValue(c_int position);
 		// // Open URL with default system browser (if available)
 		[CLink]
 		public static extern void OpenURL(char8* url);
@@ -359,7 +360,7 @@ namespace raylib_beef
 		public static extern void SetExitKey(KeyboardKey key);
 		// // Get key pressed, call it multiple times for chars queued
 		[CLink]
-		public static extern int GetKeyPressed();
+		public static extern c_int GetKeyPressed();
 
 
 		// // Input-related functions: gamepads
@@ -386,10 +387,10 @@ namespace raylib_beef
 		public static extern bool IsGamepadButtonUp(GamepadNumber gamepad, GamepadButton button);
 		// // Get the last gamepad button pressed
 		[CLink]
-		public static extern int GetGamepadButtonPressed();
+		public static extern c_int GetGamepadButtonPressed();
 		// // Return gamepad axis count for a gamepad
 		[CLink]
-		public static extern int GetGamepadAxisCount(GamepadNumber gamepad);
+		public static extern c_int GetGamepadAxisCount(GamepadNumber gamepad);
 		// // Return axis movement value for a gamepad axis
 		[CLink]
 		public static extern float GetGamepadAxisMovement(GamepadNumber gamepad, GamepadAxis axis);
@@ -410,37 +411,37 @@ namespace raylib_beef
 		public static extern bool IsMouseButtonUp(MouseButton button);
 		// // Returns mouse position X
 		[CLink]
-		public static extern int GetMouseX();
+		public static extern c_int GetMouseX();
 		// // Returns mouse position Y
 		[CLink]
-		public static extern int GetMouseY();
+		public static extern c_int GetMouseY();
 		// // Returns mouse position XY
 		[CLink]
 		public static extern Vector2 GetMousePosition();
 		// // Set mouse position XY
 		[CLink]
-		public static extern void SetMousePosition(int x, int y);
+		public static extern void SetMousePosition(c_int x, c_int y);
 		// // Set mouse offset
 		[CLink]
-		public static extern void SetMouseOffset(int offsetX, int offsetY);
+		public static extern void SetMouseOffset(c_int offsetX, c_int offsetY);
 		// // Set mouse scaling
 		[CLink]
 		public static extern void SetMouseScale(float scaleX, float scaleY);
 		// // Returns mouse wheel movement Y
 		[CLink]
-		public static extern int GetMouseWheelMove();
+		public static extern c_int GetMouseWheelMove();
 
 
 		// // Input-related functions: touch
 		// Returns touch position X for touch point 0 (relative to screen size)
 		[CLink]
-		public static extern int GetTouchX();
+		public static extern c_int GetTouchX();
 		// // Returns touch position Y for touch point 0 (relative to screen size)
 		[CLink]
-		public static extern int GetTouchY();
+		public static extern c_int GetTouchY();
 		// // Returns touch position XY for a touch point index (relative to screen size)
 		[CLink]
-		public static extern Vector2 GetTouchPosition(int index);
+		public static extern Vector2 GetTouchPosition(c_int index);
 
 
 		// //------------------------------------------------------------------------------------ Gestures and Touch
@@ -454,10 +455,10 @@ namespace raylib_beef
 		public static extern bool IsGestureDetected(GestureType gesture);
 		// // Get latest detected gesture
 		[CLink]
-		public static extern int GetGestureDetected();
+		public static extern c_int GetGestureDetected();
 		// // Get touch points count
 		[CLink]
-		public static extern int GetTouchPointsCount();
+		public static extern c_int GetTouchPointsCount();
 		// // Get gesture hold time in milliseconds
 		[CLink]
 		public static extern float GetGestureHoldDuration();
@@ -504,13 +505,13 @@ namespace raylib_beef
 		// Basic shapes drawing functions
 		// Draw a pixel
 		[CLink]
-		public static extern void DrawPixel(int posX, int posY, Color color);
+		public static extern void DrawPixel(c_int posX, c_int posY, Color color);
 		// // Draw a pixel (Vector version)
 		[CLink]
 		public static extern void DrawPixelV(Vector2 position, Color color);
 		// // Draw a line
 		[CLink]
-		public static extern void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);
+		public static extern void DrawLine(c_int startPosX, c_int startPosY, c_int endPosX, c_int endPosY, Color color);
 		// // Draw a line (Vector version)
 		[CLink]
 		public static extern void DrawLineV(Vector2 startPos, Vector2 endPos, Color color);
@@ -522,40 +523,40 @@ namespace raylib_beef
 		public static extern void DrawLineBezier(Vector2 startPos, Vector2 endPos, float thick, Color color);
 		// // Draw lines sequence
 		[CLink]
-		public static extern void DrawLineStrip(Vector2* points, int numPoints, Color color);
+		public static extern void DrawLineStrip(Vector2* points, c_int numPoints, Color color);
 		// // Draw a color-filled circle
 		[CLink]
-		public static extern void DrawCircle(int centerX, int centerY, float radius, Color color);
+		public static extern void DrawCircle(c_int centerX, c_int centerY, float radius, Color color);
 		// // Draw a piece of a circle
 		[CLink]
-		public static extern void DrawCircleSector(Vector2 center, float radius, int startAngle, int endAngle, int segments, Color color);
+		public static extern void DrawCircleSector(Vector2 center, float radius, c_int startAngle, c_int endAngle, c_int segments, Color color);
 		// // Draw circle sector outline
 		[CLink]
-		public static extern void DrawCircleSectorLines(Vector2 center, float radius, int startAngle, int endAngle, int segments, Color color);
+		public static extern void DrawCircleSectorLines(Vector2 center, float radius, c_int startAngle, c_int endAngle, c_int segments, Color color);
 		// // Draw a gradient-filled circle
 		[CLink]
-		public static extern void DrawCircleGradient(int centerX, int centerY, float radius, Color color1, Color color2);
+		public static extern void DrawCircleGradient(c_int centerX, c_int centerY, float radius, Color color1, Color color2);
 		// // Draw a color-filled circle (Vector version)
 		[CLink]
 		public static extern void DrawCircleV(Vector2 center, float radius, Color color);
 		// // Draw circle outline
 		[CLink]
-		public static extern void DrawCircleLines(int centerX, int centerY, float radius, Color color);
+		public static extern void DrawCircleLines(c_int centerX, c_int centerY, float radius, Color color);
 		// // Draw ellipse
 		[CLink]
-		public static extern void DrawEllipse(int centerX, int centerY, float radiusH, float radiusV, Color color);
+		public static extern void DrawEllipse(c_int centerX, c_int centerY, float radiusH, float radiusV, Color color);
 		// // Draw ellipse outline
 		[CLink]
-		public static extern void DrawEllipseLines(int centerX, int centerY, float radiusH, float radiusV, Color color);
+		public static extern void DrawEllipseLines(c_int centerX, c_int centerY, float radiusH, float radiusV, Color color);
 		// // Draw ring
 		[CLink]
-		public static extern void DrawRing(Vector2 center, float innerRadius, float outerRadius, int startAngle, int endAngle, int segments, Color color);
+		public static extern void DrawRing(Vector2 center, float innerRadius, float outerRadius, c_int startAngle, c_int endAngle, c_int segments, Color color);
 		// // Draw ring outline
 		[CLink]
-		public static extern void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, int startAngle, int endAngle, int segments, Color color);
+		public static extern void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, c_int startAngle, c_int endAngle, c_int segments, Color color);
 		// // Draw a color-filled rectangle
 		[CLink]
-		public static extern void DrawRectangle(int posX, int posY, int width, int height, Color color);
+		public static extern void DrawRectangle(c_int posX, c_int posY, c_int width, c_int height, Color color);
 		// // Draw a color-filled rectangle (Vector version)
 		[CLink]
 		public static extern void DrawRectangleV(Vector2 position, Vector2 size, Color color);
@@ -567,25 +568,25 @@ namespace raylib_beef
 		public static extern void DrawRectanglePro(Rectangle rec, Vector2 origin, float rotation, Color color);
 		// // Draw a vertical-gradient-filled rectangle
 		[CLink]
-		public static extern void DrawRectangleGradientV(int posX, int posY, int width, int height, Color color1, Color color2);
+		public static extern void DrawRectangleGradientV(c_int posX, c_int posY, c_int width, c_int height, Color color1, Color color2);
 		// // Draw a horizontal-gradient-filled rectangle
 		[CLink]
-		public static extern void DrawRectangleGradientH(int posX, int posY, int width, int height, Color color1, Color color2);
+		public static extern void DrawRectangleGradientH(c_int posX, c_int posY, c_int width, c_int height, Color color1, Color color2);
 		// // Draw a gradient-filled rectangle with custom vertex colors
 		[CLink]
 		public static extern void DrawRectangleGradientEx(Rectangle rec, Color col1, Color col2, Color col3, Color col4);
 		// // Draw rectangle outline
 		[CLink]
-		public static extern void DrawRectangleLines(int posX, int posY, int width, int height, Color color);
+		public static extern void DrawRectangleLines(c_int posX, c_int posY, c_int width, c_int height, Color color);
 		// // Draw rectangle outline with extended parameters
 		[CLink]
-		public static extern void DrawRectangleLinesEx(Rectangle rec, int lineThick, Color color);
+		public static extern void DrawRectangleLinesEx(Rectangle rec, c_int lineThick, Color color);
 		// // Draw rectangle with rounded edges
 		[CLink]
-		public static extern void DrawRectangleRounded(Rectangle rec, float roundness, int32 segments, Color color);
+		public static extern void DrawRectangleRounded(Rectangle rec, float roundness, c_int segments, Color color);
 		// // Draw rectangle with rounded edges outline
 		[CLink]
-		public static extern void DrawRectangleRoundedLines(Rectangle rec, float roundness, int32 segments, int lineThick, Color color);
+		public static extern void DrawRectangleRoundedLines(Rectangle rec, float roundness, c_int segments, c_int lineThick, Color color);
 		// // Draw a color-filled triangle (vertex in counter-clockwise order!)
 		[CLink]
 		public static extern void DrawTriangle(Vector2 v1, Vector2 v2, Vector2 v3, Color color);
@@ -594,19 +595,19 @@ namespace raylib_beef
 		public static extern void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);
 		// // Draw a triangle fan defined by points (first vertex is the center)
 		[CLink]
-		public static extern void DrawTriangleFan(Vector2* points, int numPoints, Color color);
+		public static extern void DrawTriangleFan(Vector2* points, c_int numPoints, Color color);
 		// // Draw a triangle strip defined by points
 		[CLink]
-		public static extern void DrawTriangleStrip(Vector2* points, int pointsCount, Color color);
+		public static extern void DrawTriangleStrip(Vector2* points, c_int pointsCount, Color color);
 		// // Draw a regular polygon (Vector version)
 		[CLink]
-		public static extern void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);
+		public static extern void DrawPoly(Vector2 center, c_int sides, float radius, float rotation, Color color);
 		// // Draw a polygon outline of n sides
 		[CLink]
-		public static extern void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);
+		public static extern void DrawPolyLines(Vector2 center, c_int sides, float radius, float rotation, Color color);
 
 
-		// // Basic shapes collision detection functions
+		// Basic shapes collision detection functions
 		// Check collision between two rectangles
 		[CLink]
 		public static extern bool CheckCollisionRecs(Rectangle rec1, Rectangle rec2);
@@ -640,13 +641,13 @@ namespace raylib_beef
 		public static extern Image LoadImage(char8* fileName);
 		// // Load image from Color array data (RGBA - 32bit)
 		[CLink]
-		public static extern Image LoadImageEx(Color* pixels, int width, int height);
+		public static extern Image LoadImageEx(Color* pixels, c_int width, c_int height);
 		// // Load image from raw data with parameters data refers to a void *
 		/*[ CLink]
-		public static extern Image LoadImagePro(IntPtr data, int width, int height, int format);*/
+		public static extern Image LoadImagePro(c_intPtr data, c_int width, c_int height, c_int format);*/
 		// // Load image from RAW file data
 		[CLink]
-		public static extern Image LoadImageRaw(char8* fileName, int width, int height, int format, int headerSize);
+		public static extern Image LoadImageRaw(char8* fileName, c_int width, c_int height, c_int format, c_int headerSize);
 		// // Unload image from CPU memory (RAM)
 		[CLink]
 		public static extern void UnloadImage(Image image);
@@ -667,28 +668,28 @@ namespace raylib_beef
 		// // Image generation functions
 		// Generate image: plain color
 		[CLink]
-		public static extern Image GenImageColor(int width, int height, Color color);
+		public static extern Image GenImageColor(c_int width, c_int height, Color color);
 		// // Generate image: vertical gradient
 		[CLink]
-		public static extern Image GenImageGradientV(int width, int height, Color top, Color bottom);
+		public static extern Image GenImageGradientV(c_int width, c_int height, Color top, Color bottom);
 		// // Generate image: horizontal gradient
 		[CLink]
-		public static extern Image GenImageGradientH(int width, int height, Color left, Color right);
+		public static extern Image GenImageGradientH(c_int width, c_int height, Color left, Color right);
 		// // Generate image: radial gradient
 		[CLink]
-		public static extern Image GenImageGradientRadial(int width, int height, float density, Color inner, Color outer);
+		public static extern Image GenImageGradientRadial(c_int width, c_int height, float density, Color inner, Color outer);
 		// // Generate image: checked
 		[CLink]
-		public static extern Image GenImageChecked(int width, int height, int checksX, int checksY, Color col1, Color col2);
+		public static extern Image GenImageChecked(c_int width, c_int height, c_int checksX, c_int checksY, Color col1, Color col2);
 		// // Generate image: white noise
 		[CLink]
-		public static extern Image GenImageWhiteNoise(int width, int height, float factor);
+		public static extern Image GenImageWhiteNoise(c_int width, c_int height, float factor);
 		// // Generate image: perlin noise
 		[CLink]
-		public static extern Image GenImagePerlinNoise(int width, int height, int offsetX, int offsetY, float scale);
+		public static extern Image GenImagePerlinNoise(c_int width, c_int height, c_int offsetX, c_int offsetY, float scale);
 		// // Generate image: cellular algorithm. Bigger tileSize means bigger cells
 		[CLink]
-		public static extern Image GenImageCellular(int width, int height, int tileSize);
+		public static extern Image GenImageCellular(c_int width, c_int height, c_int tileSize);
 
 
 		// // Image manipulation functions
@@ -700,7 +701,7 @@ namespace raylib_beef
 		public static extern Image ImageFromImage(Image image, Rectangle rec);
 		// // Create an image from text (default font)
 		[CLink]
-		public static extern Image ImageText(char8* text, int fontSize, Color color);
+		public static extern Image ImageText(char8* text, c_int fontSize, Color color);
 		// // Create an image from text (custom sprite font)
 		[CLink]
 		public static extern Image ImageTextEx(Font font, char8* text, float fontSize, float spacing, Color tint);
@@ -709,7 +710,7 @@ namespace raylib_beef
 		public static extern void ImageToPOT(Image* image, Color fillColor);
 		// // Convert image data to desired format
 		[CLink]
-		public static extern void ImageFormat(Image* image, int newFormat);
+		public static extern void ImageFormat(Image* image, c_int newFormat);
 		// // Apply alpha mask to image
 		[CLink]
 		public static extern void ImageAlphaMask(Image* image, Image alphaMask);
@@ -727,19 +728,19 @@ namespace raylib_beef
 		public static extern void ImageCrop(Image* image, Rectangle crop);
 		// // Resize image (Bicubic scaling algorithm)
 		[CLink]
-		public static extern void ImageResize(Image* image, int newWidth, int newHeight);
+		public static extern void ImageResize(Image* image, c_int newWidth, c_int newHeight);
 		// // Resize image (Nearest-Neighbor scaling algorithm)
 		[CLink]
-		public static extern void ImageResizeNN(Image* image, int newWidth, int newHeight);
+		public static extern void ImageResizeNN(Image* image, c_int newWidth, c_int newHeight);
 		// // Resize canvas and fill with color
 		[CLink]
-		public static extern void ImageResizeCanvas(Image* image, int newWidth, int newHeight, int offsetX, int offsetY, Color color);
+		public static extern void ImageResizeCanvas(Image* image, c_int newWidth, c_int newHeight, c_int offsetX, c_int offsetY, Color color);
 		// // Generate all mipmap levels for a provided image
 		[CLink]
 		public static extern void ImageMipmaps(Image* image);
 		// // Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
 		[CLink]
-		public static extern void ImageDither(Image* image, int rBpp, int gBpp, int bBpp, int aBpp);
+		public static extern void ImageDither(Image* image, c_int rBpp, c_int gBpp, c_int bBpp, c_int aBpp);
 		// // Flip image vertically
 		[CLink]
 		public static extern void ImageFlipVertical(Image* image);
@@ -766,13 +767,13 @@ namespace raylib_beef
 		public static extern void ImageColorContrast(Image* image, float contrast);
 		// // Modify image color: brightness (-255 to 255)
 		[CLink]
-		public static extern void ImageColorBrightness(Image* image, int brightness);
+		public static extern void ImageColorBrightness(Image* image, c_int brightness);
 		// // Modify image color: replace color
 		[CLink]
 		public static extern void ImageColorReplace(Image* image, Color color, Color replace);
 		// // Extract color palette from image to maximum size (memory should be freed) IntPtr refers to a Color *
 		[CLink]
-		public static extern Color* ImageExtractPalette(Image image, int maxPaletteSize, int* extractCount);
+		public static extern Color* ImageExtractPalette(Image image, c_int maxPaletteSize, c_int* extractCount);
 		// // Get image alpha border rectangle
 		[CLink]
 		public static extern Rectangle GetImageAlphaBorder(Image image, float threshold);
@@ -784,25 +785,25 @@ namespace raylib_beef
 		public static extern void ImageClearBackground(Image* dst, Color color);
 		// // Draw pixel within an image
 		[CLink]
-		public static extern void ImageDrawPixel(Image* dst, int posX, int posY, Color color);
+		public static extern void ImageDrawPixel(Image* dst, c_int posX, c_int posY, Color color);
 		// // Draw pixel within an image (Vector version)
 		[CLink]
 		public static extern void ImageDrawPixelV(Image* dst, Vector2 position, Color color);
 		// // Draw line within an image
 		[CLink]
-		public static extern void ImageDrawLine(Image* dst, int startPosX, int startPosY, int endPosX, int endPosY, Color color);
+		public static extern void ImageDrawLine(Image* dst, c_int startPosX, c_int startPosY, c_int endPosX, c_int endPosY, Color color);
 		// // Draw line within an image (Vector version)
 		[CLink]
 		public static extern void ImageDrawLineV(Image* dst, Vector2 start, Vector2 end, Color color);
 		// // Draw circle within an image
 		[CLink]
-		public static extern void ImageDrawCircle(Image* dst, int centerX, int centerY, int radius, Color color);
+		public static extern void ImageDrawCircle(Image* dst, c_int centerX, c_int centerY, c_int radius, Color color);
 		// // Draw circle within an image (Vector version)
 		[CLink]
-		public static extern void ImageDrawCircleV(Image* dst, Vector2 center, int radius, Color color);
+		public static extern void ImageDrawCircleV(Image* dst, Vector2 center, c_int radius, Color color);
 		// // Draw rectangle within an image
 		[CLink]
-		public static extern void ImageDrawRectangle(Image* dst, int posX, int posY, int width, int height, Color color);
+		public static extern void ImageDrawRectangle(Image* dst, c_int posX, c_int posY, c_int width, c_int height, Color color);
 		// // Draw rectangle within an image (Vector version)
 		[CLink]
 		public static extern void ImageDrawRectangleV(Image* dst, Vector2 position, Vector2 size, Color color);
@@ -811,13 +812,13 @@ namespace raylib_beef
 		public static extern void ImageDrawRectangleRec(Image* dst, Rectangle rec, Color color);
 		// // Draw rectangle lines within an image
 		[CLink]
-		public static extern void ImageDrawRectangleLines(Image* dst, Rectangle rec, int thick, Color color);
+		public static extern void ImageDrawRectangleLines(Image* dst, Rectangle rec, c_int thick, Color color);
 		// // Draw a source image within a destination image (tint applied to source)
 		[CLink]
 		public static extern void ImageDraw(Image* dst, Image src, Rectangle srcRec, Rectangle dstRec, Color tint);
 		// // Draw text (default font) within an image (destination)
 		[CLink]
-		public static extern void ImageDrawText(Image* dst, Vector2 position, char8* text, int fontSize, Color color);
+		public static extern void ImageDrawText(Image* dst, Vector2 position, char8* text, c_int fontSize, Color color);
 		// // Draw text (custom sprite font) within an image (destination)
 		[CLink]
 		public static extern void ImageDrawTextEx(Image* dst, Vector2 position, Font font, char8* text, float fontSize, float spacing, Color color);
@@ -838,7 +839,7 @@ namespace raylib_beef
 		public static extern Texture2D LoadTextureCubemap(Image image, CubemapLayoutType layoutType);
 		// // Load texture for rendering (framebuffer)
 		[CLink]
-		public static extern RenderTexture2D LoadRenderTexture(int width, int height);
+		public static extern RenderTexture2D LoadRenderTexture(c_int width, c_int height);
 		// // Unload texture from GPU memory (VRAM)
 		[CLink]
 		public static extern void UnloadTexture(Texture2D texture);
@@ -871,7 +872,7 @@ namespace raylib_beef
 		// // Texture drawing functions
 		// Draw a Texture2D
 		[CLink]
-		public static extern void DrawTexture(Texture2D texture, int posX, int posY, Color tint);
+		public static extern void DrawTexture(Texture2D texture, c_int posX, c_int posY, Color tint);
 		// // Draw a Texture2D with position defined as Vector2
 		[CLink]
 		public static extern void DrawTextureV(Texture2D texture, Vector2 position, Color tint);
@@ -895,7 +896,7 @@ namespace raylib_beef
 		// // Image/Texture misc functions
 		// Get pixel data size in bytes (image or texture)
 		[CLink]
-		public static extern int GetPixelDataSize(int width, int height, int format);
+		public static extern c_int GetPixelDataSize(c_int width, c_int height, c_int format);
 
 
 		// //------------------------------------------------------------------------------------ Font Loading and Text
@@ -910,16 +911,16 @@ namespace raylib_beef
 		public static extern Font LoadFont(char8* fileName);
 		// // Load font from file with extended parameters
 		[CLink]
-		public static extern Font LoadFontEx(char8* fileName, int fontSize, int* fontChars, int charsCount);
+		public static extern Font LoadFontEx(char8* fileName, c_int fontSize, c_int* fontChars, c_int charsCount);
 		// // Load font from Image (XNA style)
 		[CLink]
-		public static extern Font LoadFontFromImage(Image image, Color key, int firstChar);
+		public static extern Font LoadFontFromImage(Image image, Color key, c_int firstChar);
 		// // Load font data for further use
 		[CLink]
-		public static extern CharInfo* LoadFontData(char8* fileName, int fontSize, int* fontChars, int charsCount, FontType type);
+		public static extern CharInfo* LoadFontData(char8* fileName, c_int fontSize, c_int* fontChars, c_int charsCount, FontType type);
 		// // Generate image font atlas using chars info
 		[CLink]
-		public static extern Image GenImageFontAtlas(CharInfo* chars, Rectangle** recs, int charsCount, int fontSize, int padding, int packMethod);
+		public static extern Image GenImageFontAtlas(CharInfo* chars, Rectangle** recs, c_int charsCount, c_int fontSize, c_int padding, c_int packMethod);
 		// // Unload Font from GPU memory (VRAM)
 		[CLink]
 		public static extern void UnloadFont(Font font);
@@ -928,10 +929,10 @@ namespace raylib_beef
 		// // Text drawing functions
 		// Shows current FPS
 		[CLink]
-		public static extern void DrawFPS(int posX, int posY);
+		public static extern void DrawFPS(c_int posX, c_int posY);
 		// // Draw text (using default font)
 		[CLink]
-		public static extern void DrawText(char8 *text, int posX, int posY, int fontSize, Color color);
+		public static extern void DrawText(char8 *text, c_int posX, c_int posY, c_int fontSize, Color color);
 		// // Draw text using font and additional parameters
 		[CLink]
 		public static extern void DrawTextEx(Font font, char8* text, Vector2 position, float fontSize, float spacing, Color tint);
@@ -940,22 +941,22 @@ namespace raylib_beef
 		public static extern void DrawTextRec(Font font, char8* text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint);
 		// // Draw text using font inside rectangle limits with support for text selection
 		[CLink]
-		public static extern void DrawTextRecEx(Font font, char8* text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack);
-		// // Draw one character (codepoint)
+		public static extern void DrawTextRecEx(Font font, char8* text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, c_int selectStart, c_int selectLength, Color selectText, Color selectBack);
+		/// Draw one character (codepoint)
 		[CLink]
-		public static extern void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float scale, Color tint);
+		public static extern void DrawTextCodepoint(Font font, c_int codepoint, Vector2 position, float scale, Color tint);
 
 
 		// // Text misc. functions
 		// Measure string width for default font
 		[CLink]
-		public static extern int MeasureText(char8* text, int fontSize);
+		public static extern c_int MeasureText(char8* text, c_int fontSize);
 		// // Measure string size for Font
 		[CLink]
 		public static extern Vector2 MeasureTextEx(Font font, char8* text, float fontSize, float spacing);
 		// // Get index position for a unicode character on font
 		[CLink]										  
-		public static extern int GetGlyphIndex(Font font, int character);
+		public static extern c_int GetGlyphIndex(Font font, c_int character);
 		// // Text strings management functions NOTE: Some strings allocate memory internally for returned strings, just
 		// be careful!
 		// Check if two text string are equal
@@ -963,34 +964,34 @@ namespace raylib_beef
 		public static extern bool TextIsEqual(char8* text1, char8* text2);
 		// // Get text length, checks for '\0' ending
 		[CLink]
-		public static extern uint TextLength(char8* text);
+		public static extern c_uint TextLength(char8* text);
 		// // Get total number of characters (codepoints) in a UTF8 encoded string
 		[CLink]
-		public static extern uint TextCountCodepoints(char8* text);
+		public static extern c_uint TextCountCodepoints(char8* text);
 		// // Text formatting with variables (sprintf style)
 		[CLink]
 		public static extern char8* TextFormat(char8* text);
 		// // Get a piece of a text string
 		[CLink]
-		public static extern char8* TextSubtext(char8* text, int position, int length);
+		public static extern char8* TextSubtext(char8* text, c_int position, c_int length);
 		// // Replace text char8*(memory should be freed!)
 		[CLink]
 		public static extern char8* TextReplace(char8* text, char8* replace, char8* by);
 		// // Insert text in a position (memory should be freed!)
 		[CLink]
-		public static extern char8* TextInsert(char8* text, char8* insert, int position);
+		public static extern char8* TextInsert(char8* text, char8* insert, c_int position);
 		// // Join text strings with delimiter
 		[CLink]
-		public static extern char8* TextJoin(char8** textList, int count, char8* delimiter);
+		public static extern char8* TextJoin(char8** textList, c_int count, char8* delimiter);
 		// // Split text into multiple strings
 		[CLink]
-		public static extern char8** TextSplit(char8* text, char8 delimiter, int* count);
+		public static extern char8** TextSplit(char8* text, char8 delimiter, c_int* count);
 		// // Append text at specific position and move cursor!
 		[CLink]
-		public static extern void TextAppend(char8* text, char8* @append, int* position);
+		public static extern void TextAppend(char8* text, char8* @append, c_int* position);
 		// // Find first text occurrence within a string
 		[CLink]
-		public static extern int TextFindIndex(char8* text, char8* find);
+		public static extern c_int TextFindIndex(char8* text, char8* find);
 		// // Get upper case version of provided string
 		[CLink]
 		public static extern char8* TextToUpper(char8* text);
@@ -1002,25 +1003,25 @@ namespace raylib_beef
 		public static extern char8* TextToPascal(char8* text);
 		// // Get integer value from text (negative values not supported)
 		[CLink]
-		public static extern int TextToInteger(char8* text);
+		public static extern c_int TextToInteger(char8* text);
 		// // Get total number of characters (codepoints) in a UTF8 encoded string
 		[CLink]
-		public static extern char8* TextToUtf8(char8* text, int length);
+		public static extern char8* TextToUtf8(char8* text, c_int length);
 
 
 		// // UTF8 text strings management functions
 		// Returns next codepoint in a UTF8 encoded string
 		[CLink]
-		public static extern int* GetCodepoints(char8* text, int* count);
+		public static extern c_int* GetCodepoints(char8* text, c_int* count);
 		// // Get all codepoints in a string, codepoints count returned by parameters
 		[CLink]
-		public static extern int GetCodepointsCount(char8* text);
+		public static extern c_int GetCodepointsCount(char8* text);
 		// // Returns next codepoint in a UTF8 encoded string; 0x3f('?') is returned on failure
 		[CLink]
-		public static extern int GetNextCodepoint(char8* text, int* bytesProcessed);
+		public static extern c_int GetNextCodepoint(char8* text, c_int* bytesProcessed);
 		// // Encode codepoint into utf8 text (char array length returned as parameter)
 		[CLink]
-		public static extern char8* CodepointToUtf8(char8* text, int* byteLength);
+		public static extern char8* CodepointToUtf8(char8* text, c_int* byteLength);
 
 
 		// //------------------------------------------------------------------------------------ Basic 3d Shapes
@@ -1056,16 +1057,16 @@ namespace raylib_beef
 		public static extern void DrawSphere(Vector3 centerPos, float radius, Color color);
 		// // Draw sphere with extended parameters
 		[CLink]
-		public static extern void DrawSphereEx(Vector3 centerPos, float radius, int rings, int slices, Color color);
+		public static extern void DrawSphereEx(Vector3 centerPos, float radius, c_int rings, c_int slices, Color color);
 		// // Draw sphere wires
 		[CLink]
-		public static extern void DrawSphereWires(Vector3 centerPos, float radius, int rings, int slices, Color color);
+		public static extern void DrawSphereWires(Vector3 centerPos, float radius, c_int rings, c_int slices, Color color);
 		// // Draw a cylinder/cone
 		[CLink]
-		public static extern void DrawCylinder(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color);
+		public static extern void DrawCylinder(Vector3 position, float radiusTop, float radiusBottom, float height, c_int slices, Color color);
 		// // Draw a cylinder/cone wires
 		[CLink]
-		public static extern void DrawCylinderWires(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color);
+		public static extern void DrawCylinderWires(Vector3 position, float radiusTop, float radiusBottom, float height, c_int slices, Color color);
 		// // Draw a plane XZ
 		[CLink]
 		public static extern void DrawPlane(Vector3 centerPos, Vector2 size, Color color);
@@ -1074,7 +1075,7 @@ namespace raylib_beef
 		public static extern void DrawRay(Ray ray, Color color);
 		// // Draw a grid (centered at (0, 0, 0))
 		[CLink]
-		public static extern void DrawGrid(int slices, float spacing);
+		public static extern void DrawGrid(c_int slices, float spacing);
 		// // Draw simple gizmo
 		[CLink]
 		public static extern void DrawGizmo(Vector3 position);
@@ -1098,7 +1099,7 @@ namespace raylib_beef
 		// // Mesh loading/unloading functions
 		// Load meshes from model file
 		[CLink]
-		public static extern Mesh* LoadMeshes(char8* fileName, int* meshCount);
+		public static extern Mesh* LoadMeshes(char8* fileName, c_int* meshCount);
 		// // Export mesh data to file
 		[CLink]
 		public static extern void ExportMesh(Mesh mesh, char8* fileName);
@@ -1111,7 +1112,7 @@ namespace raylib_beef
 		// // Material loading/unloading functions
 		// Load materials from model file
 		[CLink]
-		public static extern Material* LoadMaterials(char8* fileName, int* materialCount);
+		public static extern Material* LoadMaterials(char8* fileName, c_int* materialCount);
 		// // Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
 		[CLink]
 		public static extern Material LoadMaterialDefault();
@@ -1120,10 +1121,10 @@ namespace raylib_beef
 		public static extern void UnloadMaterial(Material material);
 		// // Set texture for a material map type (MAP_DIFFUSE, MAP_SPECULAR...)
 		[CLink]
-		public static extern void SetMaterialTexture(Material* material, int mapType, Texture2D texture);
+		public static extern void SetMaterialTexture(Material* material, c_int mapType, Texture2D texture);
 		// // Set material for a mesh
 		[CLink]
-		public static extern void SetModelMeshMaterial(Model* model, int meshId, int materialId);
+		public static extern void SetModelMeshMaterial(Model* model, c_int meshId, c_int materialId);
 
 
 
@@ -1131,10 +1132,10 @@ namespace raylib_beef
 		// Load model animations from file
 		// IntPtr refers to ModelAnimation *
 		[CLink]
-		public static extern ModelAnimation* LoadModelAnimations(char8* fileName, int* animsCount);
+		public static extern ModelAnimation* LoadModelAnimations(char8* fileName, c_int* animsCount);
 		// // Update model animation pose
 		[CLink]
-		public static extern void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);
+		public static extern void UpdateModelAnimation(Model model, ModelAnimation anim, c_int frame);
 		// // Unload animation data
 		[CLink]
 		public static extern void UnloadModelAnimation(ModelAnimation anim);
@@ -1147,28 +1148,28 @@ namespace raylib_beef
 		// // Mesh generation functions
 		// Generate polygonal mesh
 		[CLink]
-		public static extern Mesh GenMeshPoly(int sides, float radius);
+		public static extern Mesh GenMeshPoly(c_int sides, float radius);
 		// // Generate plane mesh (with subdivisions)
 		[CLink]
-		public static extern Mesh GenMeshPlane(float width, float length, int resX, int resZ);
+		public static extern Mesh GenMeshPlane(float width, float length, c_int resX, c_int resZ);
 		// // Generate cuboid mesh
 		[CLink]
 		public static extern Mesh GenMeshCube(float width, float height, float length);
 		// // Generate sphere mesh (standard sphere)
 		[CLink]
-		public static extern Mesh GenMeshSphere(float radius, int rings, int slices);
+		public static extern Mesh GenMeshSphere(float radius, c_int rings, c_int slices);
 		// // Generate half-sphere mesh (no bottom cap)
 		[CLink]
-		public static extern Mesh GenMeshHemiSphere(float radius, int rings, int slices);
+		public static extern Mesh GenMeshHemiSphere(float radius, c_int rings, c_int slices);
 		// // Generate cylinder mesh
 		[CLink]
-		public static extern Mesh GenMeshCylinder(float radius, float height, int slices);
+		public static extern Mesh GenMeshCylinder(float radius, float height, c_int slices);
 		// // Generate torus mesh
 		[CLink]
-		public static extern Mesh GenMeshTorus(float radius, float size, int radSeg, int sides);
+		public static extern Mesh GenMeshTorus(float radius, float size, c_int radSeg, c_int sides);
 		// // Generate trefoil knot mesh
 		[CLink]
-		public static extern Mesh GenMeshKnot(float radius, float size, int radSeg, int sides);
+		public static extern Mesh GenMeshKnot(float radius, float size, c_int radSeg, c_int sides);
 		// // Generate heightmap mesh from image data
 		[CLink]
 		public static extern Mesh GenMeshHeightmap(Image heightmap, Vector3 size);
@@ -1276,25 +1277,25 @@ namespace raylib_beef
 		// // Shader configuration functions
 		// Get shader uniform location
 		[CLink]
-		public static extern int GetShaderLocation(Shader shader, char8* uniformName);
+		public static extern c_int GetShaderLocation(Shader shader, char8* uniformName);
 		// // Set shader uniform value value refers to a const void *
 		[CLink]
-		public static extern void SetShaderValue(Shader shader, int uniformLoc, void* value, ShaderUniformDataType uniformType);
+		public static extern void SetShaderValue(Shader shader, c_int uniformLoc, void* value, ShaderUniformDataType uniformType);
 		// // Set shader uniform value value refers to a const void *
 		[CLink]
-		public static extern void SetShaderValue(Shader shader, int uniformLoc, int* value, ShaderUniformDataType uniformType);
+		public static extern void SetShaderValue(Shader shader, c_int uniformLoc, c_int* value, ShaderUniformDataType uniformType);
 		// // Set shader uniform value value refers to a const void *
 		[CLink]
-		public static extern void SetShaderValue(Shader shader, int uniformLoc, float* value, ShaderUniformDataType uniformType);
+		public static extern void SetShaderValue(Shader shader, c_int uniformLoc, float* value, ShaderUniformDataType uniformType);
 		// // Set shader uniform value vector value refers to a const void *
 		[CLink]
-		public static extern void SetShaderValueV(Shader shader, int uniformLoc, void* value, ShaderUniformDataType uniformType, int count);
+		public static extern void SetShaderValueV(Shader shader, c_int uniformLoc, void* value, ShaderUniformDataType uniformType, c_int count);
 		// // Set shader uniform value (matrix 4x4)
 		[CLink]
-		public static extern void SetShaderValueMatrix(Shader shader, int uniformLoc, Matrix mat);
+		public static extern void SetShaderValueMatrix(Shader shader, c_int uniformLoc, Matrix mat);
 		// // Set shader uniform value for texture
 		[CLink]
-		public static extern void SetShaderValueTexture(Shader shader, int uniformLoc, Texture2D texture);
+		public static extern void SetShaderValueTexture(Shader shader, c_int uniformLoc, Texture2D texture);
 		// // Set a custom projection matrix (replaces internal projection matrix)
 		[CLink]
 		public static extern void SetMatrixProjection(Matrix proj);
@@ -1312,16 +1313,16 @@ namespace raylib_beef
 		// // Texture maps generation (PBR) NOTE: Required shaders should be provided
 		// Generate cubemap texture from HDR texture
 		[CLink]
-		public static extern Texture2D GenTextureCubemap(Shader shader, Texture2D skyHDR, int size);
+		public static extern Texture2D GenTextureCubemap(Shader shader, Texture2D skyHDR, c_int size);
 		// // Generate irradiance texture using cubemap data
 		[CLink]
-		public static extern Texture2D GenTextureIrradiance(Shader shader, Texture2D cubemap, int size);
+		public static extern Texture2D GenTextureIrradiance(Shader shader, Texture2D cubemap, c_int size);
 		// // Generate prefilter texture using cubemap data
 		[CLink]
-		public static extern Texture2D GenTexturePrefilter(Shader shader, Texture2D cubemap, int size);
+		public static extern Texture2D GenTexturePrefilter(Shader shader, Texture2D cubemap, c_int size);
 		// // Generate BRDF texture
 		[CLink]
-		public static extern Texture2D GenTextureBRDF(Shader shader, int size);
+		public static extern Texture2D GenTextureBRDF(Shader shader, c_int size);
 
 
 		// // Shading begin/end functions
@@ -1391,7 +1392,7 @@ namespace raylib_beef
 		public static extern Wave LoadWave(char8* fileName);
 		// // Load wave data from raw array data data refers to a void *
 		/*[ CLink]
-		public static extern Wave LoadWaveEx(IntPtr data, int sampleCount, int sampleRate, int sampleSize, int
+		public static extern Wave LoadWaveEx(c_intPtr data, c_int sampleCount, c_int sampleRate, c_int sampleSize, c_int
 		channels);*/
 		// // Load sound from file
 		[CLink]
@@ -1401,7 +1402,7 @@ namespace raylib_beef
 		public static extern Sound LoadSoundFromWave(Wave wave);
 		// // Update sound buffer with new data data refers to a const void *
 		[CLink]
-		public static extern void UpdateSound(Sound sound, void* data, int samplesCount);
+		public static extern void UpdateSound(Sound sound, void* data, c_int samplesCount);
 		// // Unload wave data
 		[CLink]
 		public static extern void UnloadWave(Wave wave);
@@ -1437,7 +1438,7 @@ namespace raylib_beef
 		public static extern void StopSoundMulti();
 		// // Get number of sounds playing in the multichannel
 		[CLink]
-		public static extern int GetSoundsPlaying();
+		public static extern c_int GetSoundsPlaying();
 		// // Check if a sound is currently playing
 		[CLink]
 		public static extern bool IsSoundPlaying(Sound sound);
@@ -1449,13 +1450,13 @@ namespace raylib_beef
 		public static extern void SetSoundPitch(Sound sound, float pitch);
 		// // Convert wave data to desired format
 		[CLink]
-		public static extern void WaveFormat(Wave* wave, int sampleRate, int sampleSize, int channels);
+		public static extern void WaveFormat(Wave* wave, c_int sampleRate, c_int sampleSize, c_int channels);
 		// // Copy a wave to a new wave
 		[CLink]
 		public static extern Wave WaveCopy(Wave wave);
 		// // Crop a wave to defined samples range
 		[CLink]
-		public static extern void WaveCrop(Wave* wave, int initSample, int finalSample);
+		public static extern void WaveCrop(Wave* wave, c_int initSample, c_int finalSample);
 		// // Get samples data from wave as a floats array
 		[CLink]
 		public static extern float* GetWaveData(Wave wave);
@@ -1494,7 +1495,7 @@ namespace raylib_beef
 		public static extern void SetMusicPitch(Music music, float pitch);
 		// // Set music loop count (loop repeats)
 		[CLink]
-		public static extern void SetMusicLoopCount(Music music, int count);
+		public static extern void SetMusicLoopCount(Music music, c_int count);
 		// // Get music time length (in seconds)
 		[CLink]
 		public static extern float GetMusicTimeLength(Music music);
@@ -1506,10 +1507,10 @@ namespace raylib_beef
 		// // AudioStream management functions
 		// Init audio stream (to stream raw audio pcm data)
 		[CLink]
-		public static extern AudioStream InitAudioStream(uint sampleRate, uint sampleSize, uint channels);
+		public static extern AudioStream InitAudioStream(c_uint sampleRate, c_uint sampleSize, c_uint channels);
 		// // Update audio stream buffers with data data refers to a const void *
 		[CLink]
-		public static extern void UpdateAudioStream(AudioStream stream, void* data, int samplesCount);
+		public static extern void UpdateAudioStream(AudioStream stream, void* data, c_int samplesCount);
 		// // Close audio stream and free memory
 		[CLink]
 		public static extern void CloseAudioStream(AudioStream stream);

@@ -1,5 +1,6 @@
 using System.Text;
 using System;
+using System.Interop;
 
 namespace raylib_beef
 {
@@ -54,7 +55,7 @@ namespace raylib_beef
 
 		// Choose the current matrix to be transformed
 		[CLink]
-		public static extern void rlMatrixMode(int mode);
+		public static extern void rlMatrixMode(c_int mode);
 
 		// Push the current matrix to stack
 		[CLink]
@@ -92,7 +93,7 @@ namespace raylib_beef
 
 		// Set the viewport area
 		[CLink]
-		public static extern void rlViewport(int x, int y, int width, int height);
+		public static extern void rlViewport(c_int x, c_int y, c_int width, c_int height);
 
 	}
 }
