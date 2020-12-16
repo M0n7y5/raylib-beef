@@ -5,82 +5,113 @@ namespace raylib_beef
 {
 	public static class Raymath
 	{
-		// Used by Import to load the native library.
-		public const String nativeLibName = "raylib.dll";
+		//----------------------------------------------------------------------------------
+		// Module Functions Definition - Utils math
+		//----------------------------------------------------------------------------------
 
-		// Clamp float value
+		/// Clamp float value
 		[CLink]
 		public static extern float Clamp(float value, float min, float max);
 
-		// Calculate linear interpolation between two vectors
+		/// Calculate linear interpolation between two vectors
 		[CLink]
 		public static extern float Lerp(float start, float end, float amount);
 
-		// Vector with components value 0.0f
+		/// Normalize input value within input range
+		[CLink]
+		public static extern float Normalize(float value, float start, float end);
+
+
+		/// Remap input value within input range to output range
+		[CLink]
+		public static extern float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd);
+
+		//----------------------------------------------------------------------------------
+		// Module Functions Definition - Vector2 math
+		//----------------------------------------------------------------------------------
+
+		/// Vector with components value 0.0f
 		[CLink]
 		public static extern Vector2 Vector2Zero();
 
-		// Vector with components value 1.0f
+		/// Vector with components value 1.0f
 		[CLink]
 		public static extern Vector2 Vector2One();
 
-		// Add two vectors (v1 + v2)
+		/// Add two vectors (v1 + v2)
 		[CLink]
 		public static extern Vector2 Vector2Add(Vector2 v1, Vector2 v2);
 
-		// Subtract two vectors (v1 - v2)
+		/// Subtract two vectors (v1 - v2)
 		[CLink]
 		public static extern Vector2 Vector2Subtract(Vector2 v1, Vector2 v2);
 
-		// Calculate vector length
+		/// Calculate vector length
 		[CLink]
 		public static extern float Vector2Length(Vector2 v);
 
-		// Calculate two vectors dot product
+		/// Calculate vector square length
+		[CLink]
+		public static extern float Vector2LengthSqr(Vector2 v);
+
+		/// Calculate two vectors dot product
 		[CLink]
 		public static extern float Vector2DotProduct(Vector2 v1, Vector2 v2);
 
-		// Calculate distance between two vectors
+		/// Calculate distance between two vectors
 		[CLink]
 		public static extern float Vector2Distance(Vector2 v1, Vector2 v2);
 
-		// Calculate angle from two vectors in X-axis
+		/// Calculate angle from two vectors in X-axis
 		[CLink]
 		public static extern float Vector2Angle(Vector2 v1, Vector2 v2);
 
-		// Scale vector (multiply by value)
+		/// Scale vector (multiply by value)
 		[CLink]
 		public static extern Vector2 Vector2Scale(Vector2 v, float scale);
 
-		// Multiply vector by vector
+		/// Multiply vector by vector
 		[CLink]
 		public static extern Vector2 Vector2MultiplyV(Vector2 v1, Vector2 v2);
 
-		// Negate vector
+		/// Negate vector
 		[CLink]
 		public static extern Vector2 Vector2Negate(Vector2 v);
 
-		// Divide vector by a float value
+		/// Divide vector by a float value
 		[CLink]
 		public static extern Vector2 Vector2Divide(Vector2 v, float div);
 
-		// Divide vector by vector
+		/// Divide vector by vector
 		[CLink]
 		public static extern Vector2 Vector2DivideV(Vector2 v1, Vector2 v2);
 
-		// Normalize provided vector
+		/// Normalize provided vector
 		[CLink]
 		public static extern Vector2 Vector2Normalize(Vector2 v);
 
-		// Calculate linear interpolation between two vectors
+		/// Calculate linear interpolation between two vectors
 		[CLink]
 		public static extern Vector2 Vector2Lerp(Vector2 v1, Vector2 v2, float amount);
 
-		// Vector with components value 0.0f
+
+		/// Calculate reflected vector to normal
+		[CLink]
+		public static extern Vector2 Vector2Reflect(Vector2 v, Vector2 normal);
+
+		/// Rotate Vector by float in Degrees.
+		[CLink]
+		public static extern Vector2 Vector2Rotate(Vector2 v, float degs);
+
+		/// Move Vector towards target
+		[CLink]
+		public static extern Vector2 Vector2MoveTowards(Vector2 v, Vector2 target, float maxDistance);
+
+		/// Vector with components value 0.0f
 		[CLink]
 		public static extern Vector3 Vector3Zero();
 
-		// Vector with components value 1.0f
+		/// Vector with components value 1.0f
 		[CLink]
 		public static extern Vector3 Vector3One();
 
@@ -112,8 +143,11 @@ namespace raylib_beef
 		[CLink]
 		public static extern float Vector3Length(Vector3 v);
 
-		// Calculate two vectors dot product
+		/// Calculate vector square length
+		[CLink]
+		public static extern float Vector3LengthSqr(Vector3 v);
 
+		// Calculate two vectors dot product
 		[CLink]
 		public static extern float Vector3DotProduct(Vector3 v1, Vector3 v2);
 

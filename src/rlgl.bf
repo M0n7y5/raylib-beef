@@ -1,6 +1,7 @@
 using System.Text;
 using System;
 using System.Interop;
+using raylib_beef.Types;
 
 namespace raylib_beef
 {
@@ -53,6 +54,9 @@ namespace raylib_beef
 		// Functions Declaration - Matrix operations
 		// ------------------------------------------------------------------------------------
 
+
+
+
 		// Choose the current matrix to be transformed
 		[CLink]
 		public static extern void rlMatrixMode(c_int mode);
@@ -94,6 +98,12 @@ namespace raylib_beef
 		// Set the viewport area
 		[CLink]
 		public static extern void rlViewport(c_int x, c_int y, c_int width, c_int height);
+
+		// Vertex data management ---------------------
+		[CLink]
+		public static extern void rlDrawMeshInstanced(Mesh mesh, Material material, Matrix* transforms, int count);
+
+
 
 	}
 }
