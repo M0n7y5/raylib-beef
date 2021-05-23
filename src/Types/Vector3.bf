@@ -34,10 +34,16 @@ namespace raylib_beef.Types
 			return x.GetHashCode() + y.GetHashCode() + z.GetHashCode();
 		}
 
-		public String ToString()
+
+		/*public override void ToString(String strBuffer)
 		{
-			return new String()
-				..AppendF("Vector3(\" {} \" \" {} \" \" {} \")", x, y, z);
+			base.ToString(strBuffer);
+		}*/
+
+		public override void ToString(String outString)
+		{
+			outString
+				.Append(scope $"Vector3({x:00.0},{y:00.0},{z:00.0})");
 		}
 
 		// Common values

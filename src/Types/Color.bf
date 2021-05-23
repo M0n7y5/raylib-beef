@@ -1,4 +1,5 @@
 using System;
+using static raylib_beef.Raylib;
 namespace raylib_beef.Types
 {
 	// Color type, RGBA (32bit)
@@ -39,12 +40,46 @@ namespace raylib_beef.Types
 		public static Color MAGENTA = Color(255, 0, 255, 255);
 		public static Color RAYWHITE = Color(245, 245, 245, 255);
 
+		public static Color operator+(Color a, Color b)
+		{
+			return .(a.r + b.r, a.g + b.g, a.b + b.b, a.a + b.a);
+		}
+
+		public static Color operator-(Color a, Color b)
+		{
+			return .((.)a.r - b.r, (.)a.g - b.g, (.)a.b - b.b, (.)a.a - b.a);
+		}
+
+		public static Color operator*(Color a, float b)
+		{
+			return .(a.r + (.)(255 * b),
+				a.g + (.)(255 * b),
+				a.b + (.)(255 * b),
+				a.a + (.)(255 * b));
+		}
+
 		public this(uint8 r, uint8 g, uint8 b, uint8 a)
 		{
 			this.r = r;
 			this.g = g;
 			this.b = b;
 			this.a = a;
+		}
+
+		public static Color LerpRGB(Color a, Color b, float t)
+		{
+			return Color
+				(
+				(.)(a.r + (b.r - a.r) * t),
+				(.)(a.g + (b.g - a.g) * t),
+				(.)(a.b + (b.b - a.b) * t),
+				(.)(a.a + (b.a - a.a) * t)
+				);
+		}
+
+		public static Color LerpBlend(Color color, Color color2, float param)
+		{
+			return ColorAlphaBlend(color, color2, ColorAlpha(.WHITE, param));
 		}
 	}
 }

@@ -1,7 +1,8 @@
+using System.Interop;
 namespace raylib_beef.Enums
 {
 	// Android buttons
-	public enum AndroidButton : int32
+	public enum AndroidButton : c_int
 	{
 		KEY_BACK = 4,
 		KEY_MENU = 82,

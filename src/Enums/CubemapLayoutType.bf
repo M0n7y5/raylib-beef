@@ -1,7 +1,8 @@
+using System.Interop;
 namespace raylib_beef.Enums
 {
 	// Cubemap layout type
-	public enum CubemapLayoutType : int32
+	public enum CubemapLayout : c_int
 	{
 	    CUBEMAP_AUTO_DETECT = 0,        // Automatically detect layout type
 	    CUBEMAP_LINE_VERTICAL,          // Layout is defined by a vertical line with faces

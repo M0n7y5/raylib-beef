@@ -1,7 +1,8 @@
+using System.Interop;
 namespace raylib_beef.Enums
 {
 	// Mouse buttons
-	public enum MouseButton	: int32
+	public enum MouseButton	: c_int
 	{
 		MOUSE_LEFT_BUTTON = 0,
 		MOUSE_RIGHT_BUTTON = 1,

@@ -24,14 +24,9 @@ namespace raylib_beef.Types
 			return x.GetHashCode() + y.GetHashCode();
 		}
 
-		/*public String ToString()
+		public override void ToString(String outStr)
 		{
-			return  "Vector2(" + x + " " + y + ")";
-		}*/
-
-		public String ToString()
-		{
-			return new String()..AppendF("Vector2(\" {} \" \" {} \")", x, y);
+			outStr.AppendF("Vector2({}, {})", x, y);
 		}
 
 		// Common values

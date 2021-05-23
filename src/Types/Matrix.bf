@@ -10,11 +10,26 @@ namespace raylib_beef.Types
 		public float m2, m6, m10, m14;
 		public float m3, m7, m11, m15;
 
-		/*public void ToString(ref String str, bool newline)
-		{
-			let n = newline ? "\n" : "";
+		/*public float m11, m12, m13, m14;
+		public float m21, m22, m23, m24;
+		public float m31, m32, m33, m34;
+		public float m41, m42, m43, m44;*/
 
-		}*/
+		public static Matrix operator*(Matrix a, Matrix b)
+		{
+			Matrix m = default;
+
+			var a, b;
+
+			float* pA = (float*)(void*)&a;
+			float* pB = (float*)(void*)&b;
+
+			Span<float> mA = .(pA, 16);
+			Span<float> mB = .(pB, 16);
+
+
+			return m;
+		}
 
 	}
 }

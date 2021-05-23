@@ -8,8 +8,8 @@ StartupObject = "Program"
 
 [Configs.Debug.Win64]
 CLibType = "Static"
-BeefLibType = "Static"
-LibPaths = ["$(ProjectDir)/dist/x64/raylib_static.lib"]
+BeefLibType = "DynamicDebug"
+LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
 
 [Configs.Debug.Win32]
 BuildKind = "DynamicLib"

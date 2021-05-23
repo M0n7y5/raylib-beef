@@ -1,11 +1,14 @@
 using System;
+using System.Interop;
 namespace raylib_beef.Types
 {
 	[CRepr]
 	public struct Font
 	{
-		public int32 baseSize;// Base size (default chars height)
-		public int32 charsCount;// Number of characters
+		public c_int baseSize;// Base size (default chars height)
+		public c_int charsCount;// Number of characters
+		public c_int charsPadding;
+
 		public Texture2D texture;// Font texture
 
 		// recs refers to a Rectangle *

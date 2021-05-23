@@ -1,3 +1,4 @@
 ﻿build
 BeefSpace_User.toml
 dist
+*.zip
