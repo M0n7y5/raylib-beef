@@ -23,7 +23,7 @@ namespace raylib_beef
 
 		[CLink]
 		/// Check if window is currently fullscreen
-		public static extern void IsWindowFullscreen();
+		public static extern bool IsWindowFullscreen();
 
 		[CLink]
 		/// Check if window is currently hidden

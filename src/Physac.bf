@@ -1,4 +1,7 @@
-using System;
+// Will raylib_beef removed soon _________
+
+
+/*using System;
 using System.Interop;
 using raylib_beef.Types;
 namespace raylib_beef
@@ -98,4 +101,4 @@ namespace raylib_beef
 		[CLink]
 		public static extern void ClosePhysics();
 	}
-}
+}*/
