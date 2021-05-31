@@ -34,8 +34,11 @@
 # Quick Start *(using Beef IDE)*
 1. **Download** raylib-beef and copy it here: **C:\Program Files\BeefLang\BeefLibs**
 2. Right-click on your workspace and select **Add from Installed** and choose raylib-beef
+
 ![](img/from-installed.png)
+
 3. **Make** raylib-beef **as a dependency** of your project 
+
 ![](img/add-deps.png)
 4. Write some code:
 ```csharp
