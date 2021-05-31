@@ -8,13 +8,14 @@ StartupObject = "Program"
 
 [Configs.Debug.Win64]
 CLibType = "Static"
-BeefLibType = "DynamicDebug"
+BeefLibType = "Static"
 LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
 
 [Configs.Debug.Win32]
 BuildKind = "DynamicLib"
-CLibType = "None"
-LibPaths = ["$(ProjectDir)/dist/x86/raylib_static.lib"]
+CLibType = "Static"
+BeefLibType = "Static"
+LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
 
 [Configs.Paranoid.Win32]
 BuildKind = "DynamicLib"
@@ -24,12 +25,11 @@ BuildKind = "DynamicLib"
 
 [Configs.Release.Win64]
 BuildKind = "StaticLib"
-LibPaths = ["$(ProjectDir)/dist/x64/raylib_static.lib"]
+LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
 
 [Configs.Release.Win32]
 BuildKind = "DynamicLib"
-CLibType = "None"
-LibPaths = ["$(ProjectDir)/dist/x86/raylib_static.lib"]
+LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
 
 [Configs.Test.Win32]
 BuildKind = "DynamicLib"

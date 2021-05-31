@@ -13,7 +13,7 @@ namespace raylib_beef
 		/// Check if KEY_ESCAPE pressed or Close icon pressed
 		public static extern bool WindowShouldClose();
 
-		[CLink]//[LinkName("CloseWindow")]
+		[LinkName("rCloseWindow") /* linker fix */]
 		/// Close window and unload OpenGL context
 		public static extern void CloseWindow();
 

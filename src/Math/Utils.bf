@@ -1,7 +1,7 @@
 using System;
 namespace raylib_beef
 {
-	extension Raymath
+	static
 	{
 		/// Clamp float value
 		public static float Clamp(float value, float min, float max)
@@ -19,14 +19,14 @@ namespace raylib_beef
 		/// Normalize input value within input range
 		public static float Normalize(float value, float start, float end)
 		{
-			return (value - start)/(end - start);
+			return (value - start) / (end - start);
 		}
 
 
 		/// Remap input value within input range to output range
 		public static float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd)
 		{
-			return (value - inputStart)/(inputEnd - inputStart)*(outputEnd - outputStart) + outputStart;
+			return (value - inputStart) / (inputEnd - inputStart) * (outputEnd - outputStart) + outputStart;
 		}
 
 	}
