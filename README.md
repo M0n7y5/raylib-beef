@@ -40,6 +40,7 @@
 3. **Make** raylib-beef **as a dependency** of your project 
 
 ![](img/add-deps.png)
+
 4. Write some code:
 ```csharp
 using System;
