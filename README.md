@@ -1,9 +1,18 @@
-![](img/raylib-beef-logo.png)
 # Raylib-Beef
+
+<img align="left" src="https://github.com/M0n7y5/raylib-beef/raw/master/img/raylib-beef-logo.png" width="256px">
+
 **raylib-beef** is a Beef wrapper library for **Raylib 3.1 dev**, a simple and easy-to-use library. In combination with benefits of Beef programming language, making games is pure satisfaction!
 
 > **Attention!** This binding is still in development. Bugs may occur.
 	Binaries are removed from repo. You can download this library with binaries from [Release page](https://github.com/M0n7y5/raylib-beef/releases)!
+
+<br>
+<br>
+<br>
+<br>
+
+---
 
 ## What is done
 - Bindings for:
@@ -34,6 +43,7 @@
 ```csharp
 using System;
 using static raylib_beef.Raylib;
+
 namespace YOUR_NAMESPACE_HERE
 {
 	class Program
@@ -67,6 +77,42 @@ namespace YOUR_NAMESPACE_HERE
 }
 ```
 5. Profit!
+
+<center>
+
+![](img/screen.png)
+
+</center>
+
+## Provided libraries are compiled with these flags
+```
+Commandline options:
+-DSUPPORT_FILEFORMAT_JPG:BOOL="1" 
+-DSUPPORT_FILEFORMAT_TGA:BOOL="1" 
+-DSUPPORT_WINMM_HIGHRES_TIMER:BOOL="1" 
+-DSUPPORT_FILEFORMAT_FLAC:BOOL="1" 
+-DUSE_MSVC_RUNTIME_LIBRARY_DLL:BOOL="0" 
+-DPLATFORM:STRING="Desktop" 
+-DMACOS_FATLIB:BOOL="0" 
+-DCUSTOMIZE_BUILD:BOOL="1" 
+-DSUPPORT_FILEFORMAT_GIF:BOOL="1" 
+-DBUILD_EXAMPLES:BOOL="0" 
+-DOPENGL_VERSION:STRING="3.3" 
+
+Cache file:
+SUPPORT_FILEFORMAT_JPG:BOOL=1
+SUPPORT_FILEFORMAT_TGA:BOOL=1
+SUPPORT_WINMM_HIGHRES_TIMER:BOOL=1
+SUPPORT_FILEFORMAT_FLAC:BOOL=1
+USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=0
+PLATFORM:STRING=Desktop
+MACOS_FATLIB:BOOL=0
+CUSTOMIZE_BUILD:BOOL=1
+SUPPORT_FILEFORMAT_GIF:BOOL=1
+BUILD_EXAMPLES:BOOL=0
+OPENGL_VERSION:STRING=3.3
+```
+
 
 # More Info
 - More info about **raylib** (https://github.com/raysan5/raylib)
