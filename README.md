@@ -41,7 +41,11 @@
 
 ![](img/add-deps.png)
 
-4. Write some code:
+4. **Set** your project **build properties** like this:
+
+![](img/build-settings.png)
+
+5. Write some code:
 ```csharp
 using System;
 using static raylib_beef.Raylib;
@@ -78,7 +82,7 @@ namespace YOUR_NAMESPACE_HERE
 	}
 }
 ```
-5. Profit!
+6. Profit!
 
 <center>
 
