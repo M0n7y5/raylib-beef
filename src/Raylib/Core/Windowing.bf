@@ -13,7 +13,11 @@ namespace raylib_beef
 		/// Check if KEY_ESCAPE pressed or Close icon pressed
 		public static extern bool WindowShouldClose();
 
+#if BF_PLATFORM_WINDOWS 
 		[LinkName("rCloseWindow") /* linker fix */]
+#else
+		[CLink]
+#endif
 		/// Close window and unload OpenGL context
 		public static extern void CloseWindow();
 
@@ -32,11 +36,11 @@ namespace raylib_beef
 		[CLink]
 		/// Check if window has been minimized (or lost focus)
 		public static extern bool IsWindowMinimized();
-		
+
 		[CLink]
 		/// Check if window is currently maximized (only PLATFORM_DESKTOP)
 		public static extern bool IsWindowMaximized();
-		
+
 		[CLink]
 		/// Check if window is currently focused (only PLATFORM_DESKTOP)
 		public static extern bool IsWindowFocused();
@@ -116,7 +120,7 @@ namespace raylib_beef
 		[CLink]
 		/// Get current connected monitor
 		public static extern c_int GetCurrentMonitor();
-		
+
 		[CLink]
 		/// Get specified monitor position
 		public static extern Vector2 GetMonitorPosition();
@@ -128,7 +132,7 @@ namespace raylib_beef
 		[CLink]
 		/// Get primary monitor height
 		public static extern c_int GetMonitorHeight(c_int monitor);
-		
+
 		[CLink]
 		/// Get primary monitor physical width in millimetres
 		public static extern c_int GetMonitorPhysicalWidth(c_int monitor);
