@@ -7,8 +7,8 @@
 > **Attention!** This binding is still in development. Bugs may occur.
 	You can download this library with binaries from [Release page](https://github.com/M0n7y5/raylib-beef/releases)!
 
-<br>
-<br>
+> **OS Support** is limited only for Windows right now. I am able test this library only on Windows at this moment.  
+
 <br>
 <br>
 
