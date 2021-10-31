@@ -14,7 +14,7 @@ namespace raylib_beef
 		public static extern bool WindowShouldClose();
 
 #if BF_PLATFORM_WINDOWS 
-		[LinkName("rCloseWindow") /* linker fix */]
+		[Import("raylib.lib"), CLink /* linker fix for user32.lib conflicting library */]
 #else
 		[CLink]
 #endif

@@ -1,38 +1,43 @@
 FileVersion = 1
-Dependencies = {corlib = "*", corlib = "*"}
+Dependencies = {corlib = "*", corlib = "*", corlib = "*"}
 
 [Project]
 Name = "raylib-beef"
 TargetType = "BeefLib"
 StartupObject = "Program"
 
-[Configs.Debug.Win64]
-CLibType = "Static"
-BeefLibType = "Static"
+[Configs.DebugStatic.Win64]
+OtherLinkFlags = "$(LinkFlags) -libpath:\"$(ProjectDir)/dist/x64/\""
 LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
 
-[Configs.Debug.Win32]
-BuildKind = "DynamicLib"
-CLibType = "Static"
-BeefLibType = "Static"
+[Configs.DebugStatic.Win32]
+OtherLinkFlags = "$(LinkFlags) $(LinkFlags) -libpath:\"$(ProjectDir)/dist/x86/\""
 LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
 
-[Configs.Paranoid.Win32]
-BuildKind = "DynamicLib"
+[Configs.ReleaseStatic.Win64]
+OtherLinkFlags = "$(LinkFlags) -libpath:\"$(ProjectDir)/dist/x64/\""
+LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
 
-[Configs.Paranoid.Win64]
-BuildKind = "DynamicLib"
+[Configs.ReleaseStatic.Win32]
+OtherLinkFlags = "$(LinkFlags) $(LinkFlags) -libpath:\"$(ProjectDir)/dist/x86/\""
+LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
 
 [Configs.Release.Win64]
-BuildKind = "StaticLib"
-LibPaths = ["$(ProjectDir)/dist/x64/raylib.lib"]
+OtherLinkFlags = "$(LinkFlags) -libpath:\"$(ProjectDir)/dist/x64DLL/\""
+LibPaths = ["$(ProjectDir)/dist/x64DLL/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64DLL/*.dll\")"]
 
 [Configs.Release.Win32]
-BuildKind = "DynamicLib"
-LibPaths = ["$(ProjectDir)/dist/x86/raylib.lib"]
+OtherLinkFlags = "$(LinkFlags) $(LinkFlags) -libpath:\"$(ProjectDir)/dist/x86DLL/\""
+LibPaths = ["$(ProjectDir)/dist/x86DLL/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86DLL/*.dll\")"]
 
-[Configs.Test.Win32]
-BuildKind = "DynamicLib"
+[Configs.Debug.Win64]
+OtherLinkFlags = "$(LinkFlags) -libpath:\"$(ProjectDir)/dist/x64DLL/\""
+LibPaths = ["$(ProjectDir)/dist/x64DLL/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x64DLL/*.dll\")"]
 
-[Configs.Test.Win64]
-BuildKind = "DynamicLib"
+[Configs.Debug.Win32]
+OtherLinkFlags = "$(LinkFlags) $(LinkFlags) -libpath:\"$(ProjectDir)/dist/x86DLL/\""
+LibPaths = ["$(ProjectDir)/dist/x86DLL/raylib.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist/x86DLL/*.dll\")"]
