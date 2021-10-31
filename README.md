@@ -25,7 +25,6 @@
 - there are no bindings for text manipulating methods
 	- Beef already has custom methods for text manupulation
 -  rlgl bindings are **partly done**
-- dynamic linking is not implemented, will be added later
 
 ## TODO:
 - Rewrite examples in Beef
@@ -41,11 +40,9 @@
 
 ![](img/add-deps.png)
 
-4. **Set** your project **build properties** to this:
 
-![](img/build-settings.png)
 
-5. Write some code:
+4. Write some code:
 ```csharp
 using System;
 using static raylib_beef.Raylib;
@@ -89,6 +86,16 @@ namespace YOUR_NAMESPACE_HERE
 ![](img/screen.png)
 
 </center>
+
+## Static linking
+By default linking is set to dynamically link to Raylib. You can change that by selecting different raylib-beef **project configuration** in **Workspace** settings. You can select from **DebugStatic** and **ReleaseStatic**.
+
+![](img/static-linking.png)
+
+Then **set** your app project **build properties** to this:
+
+![](img/build-settings.png)
+
 
 ## Provided libraries are compiled with these flags
 ```cmake
