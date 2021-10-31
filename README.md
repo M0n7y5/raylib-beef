@@ -79,7 +79,7 @@ namespace YOUR_NAMESPACE_HERE
 	}
 }
 ```
-6. Profit!
+5. Profit!
 
 <center>
 
@@ -124,7 +124,7 @@ SUPPORT_FILEFORMAT_TGA:BOOL=1
 
 # Contribution
 
-I'll be glad for any contribution & pull requests
+I'll be glad for any reported issues & pull requests
 
 ## Notes
 - any contributions apart from bugfixes need to be placed in `src/Extensions`
