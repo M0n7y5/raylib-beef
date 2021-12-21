@@ -31,7 +31,7 @@
 - finish rlgl.h bindings
 
 # Quick Start *(using Beef IDE)*
-1. **Download** raylib-beef and copy it to: **C:\Program Files\BeefLang\BeefLibs**
+1. **Download** raylib-beef.zip **FROM RELEASE PAGE** and extract raylib-beef folder from that zip file to: **C:\Program Files\BeefLang\BeefLibs**
 2. Right-click on your workspace and select **Add from Installed** and choose raylib-beef
 
 ![](img/from-installed.png)
