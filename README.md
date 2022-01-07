@@ -96,27 +96,8 @@ Then **set** your app project **build properties** to this:
 
 ![](img/build-settings.png)
 
-
-## Provided libraries are compiled with these flags
-```cmake
-Commandline options:
--DSUPPORT_FILEFORMAT_JPG:BOOL="1" 
--DGLFW_USE_HYBRID_HPG:BOOL="1" 
--DSUPPORT_FILEFORMAT_FLAC:BOOL="1" 
--DCUSTOMIZE_BUILD:BOOL="1" 
--DBUILD_EXAMPLES:BOOL="0" 
--DSUPPORT_FILEFORMAT_GIF:BOOL="1" 
--DSUPPORT_FILEFORMAT_TGA:BOOL="1" 
-
-Cache file:
-SUPPORT_FILEFORMAT_JPG:BOOL=1
-GLFW_USE_HYBRID_HPG:BOOL=1
-SUPPORT_FILEFORMAT_FLAC:BOOL=1
-CUSTOMIZE_BUILD:BOOL=1
-BUILD_EXAMPLES:BOOL=0
-SUPPORT_FILEFORMAT_GIF:BOOL=1
-SUPPORT_FILEFORMAT_TGA:BOOL=1
-```
+# More Examples
+https://github.com/DerTee/raylib-beef-examples
 
 # More Info
 - More info about **raylib** (https://github.com/raysan5/raylib)
