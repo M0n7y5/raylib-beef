@@ -152,5 +152,6 @@ namespace raylib_beef
 		[CLink]
 		/// GEt number of touch points
 		public static extern c_int GetTouchPointCount();
+		public static extern c_int GetTouchPointCount();
 	}
 }
