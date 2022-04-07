@@ -2,7 +2,7 @@ using System;
 namespace raylib_beef.Types
 {
 	[CRepr]
-	public struct CharInfo
+	public struct GlyphInfo
 	{
 		public int32 value;// Character value (Unicode)
 		public int32 offsetX;// Character offset X when drawing

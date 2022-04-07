@@ -47,6 +47,10 @@ namespace raylib_beef
 		public static extern void DrawCubeTexture(Texture2D texture, Vector3 position, float width, float height, float length, Color color);
 
 		[CLink]
+		/// Draw cube with a region of a texture
+		public static extern void DrawCubeTextureRec(Texture2D texture, Rectangle source, Vector3 position, float width, float height, float length, Color color);
+
+		[CLink]
 		/// Draw sphere
 		public static extern void DrawSphere(Vector3 centerPos, float radius, Color color);
 
@@ -65,6 +69,14 @@ namespace raylib_beef
 		[CLink]
 		/// Draw a cylinder/cone wires
 		public static extern void DrawCylinderWires(Vector3 position, float radiusTop, float radiusBottom, float height, c_int slices, Color color);
+
+		[CLink]
+		/// Draw a cylinder with base at startPos and top at endPos
+		public static extern void DrawCylinderEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, c_int sides, Color color);
+
+		[CLink]
+		/// Draw a cylinder wires with base at startPos and top at endPos
+		public static extern void DrawCylinderWiresEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, c_int sides, Color color);
 
 		[CLink]
 		/// Draw a plane XZ
@@ -87,6 +99,10 @@ namespace raylib_beef
 		[CLink]
 		/// Load model from generated mesh (default material)
 		public static extern Model LoadModelFromMesh(Mesh mesh);
+
+		[CLink]
+		/// Compute model bounding box limits (considers all meshes)
+		public static extern BoundingBox GetModelBoundingBox(Model model);
 
 		[CLink]
 		/// Unload model from memory (RAM and/or VRAM)
@@ -198,6 +214,10 @@ namespace raylib_beef
 		public static extern Mesh GenMeshCylinder(float radius, float height, c_int slices);
 
 		[CLink]
+		/// Generate cone/pyramid mesh
+		public static extern Mesh GenMeshCone(float radius, float height, int slices);
+
+		[CLink]
 		/// Generate torus mesh
 		public static extern Mesh GenMeshTorus(float radius, float size, c_int radSeg, c_int sides);
 
@@ -214,18 +234,19 @@ namespace raylib_beef
 		public static extern Mesh GenMeshCubicmap(Image cubicmap, Vector3 cubeSize);
 
 
-		/// Mesh manipulation functions
+
 		[CLink]
 		/// Compute mesh bounding box limits
-		public static extern BoundingBox MeshBoundingBox(Mesh mesh);
+		public static extern BoundingBox GetMeshBoundingBox(Mesh mesh);
 
 		[CLink]
 		/// Compute mesh tangents
-		public static extern void MeshTangents(Mesh* mesh);
+		public static extern void GenMeshTangents(Mesh* mesh);
 
 		[CLink]
 		/// Compute mesh binormals
-		public static extern void MeshBinormals(Mesh* mesh);
+		public static extern void GenMeshBinormals(Mesh* mesh);
+
 
 
 		/// Model drawing functions
@@ -257,6 +278,10 @@ namespace raylib_beef
 		/// Draw a billboard texture defined by sourceRec
 		public static extern void DrawBillboardRec(Camera3D camera, Texture2D texture, Rectangle sourceRec, Vector3 center, float size, Color tint);
 
+		[CLink]
+		// Draw a billboard texture defined by source and rotation
+		public static extern void DrawBillboardPro(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector3 up, Vector2 size, Vector2 origin, float rotation, Color tint); 
+
 
 		/// Collision detection functions
 		[CLink]
@@ -271,29 +296,29 @@ namespace raylib_beef
 		/// Detect collision between box and sphere
 		public static extern bool CheckCollisionBoxSphere(BoundingBox @box, Vector3 centerSphere, float radiusSphere);
 
+		
 		[CLink]
-		/// Detect collision between ray and sphere
-		public static extern bool CheckCollisionRaySphere(Ray ray, Vector3 spherePosition, float sphereRadius);
+		/// Get collision info between ray and sphere
+		public static extern RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius);
 
 		[CLink]
-		/// Detect collision between ray and sphere, returns collision point
-		public static extern bool CheckCollisionRaySphereEx(Ray ray, Vector3 spherePosition, float sphereRadius, Vector3* collisionPoint);
-
-		[CLink]
-		/// Detect collision between ray and box
-		public static extern bool CheckCollisionRayBox(Ray ray, BoundingBox @box);
+		// Get collision info between ray and box
+		public static extern RayCollision GetRayCollisionBox(Ray ray, BoundingBox Box);
 
 		[CLink]
 		/// Get collision info between ray and model
-		public static extern RayHitInfo GetCollisionRayModel(Ray ray, Model model);
+		public static extern RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform);
 
 		[CLink]
-		/// Get collision info between ray and triangle
-		public static extern RayHitInfo GetCollisionRayTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);
+		/// Get collision info between ray and model
+		public static extern RayCollision GetRayCollisionModel(Ray ray, Model model);
 
 		[CLink]
-		/// Get collision info between ray and ground plane (Y-normal plane)
-		public static extern RayHitInfo GetCollisionRayGround(Ray ray, float groundHeight);
+		// Get collision info between ray and triangle
+		public static extern RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);
 
+		[CLink]
+		// Get collision info between ray and quad
+		public static extern RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4);
 	}
 }

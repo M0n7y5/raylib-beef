@@ -2,7 +2,7 @@ using System;
 namespace raylib_beef.Types
 {
 	[CRepr]
-	public struct RayHitInfo
+	public struct RayCollision
 	{
 		public int32 hit;// Did the ray hit something?
 		public float distance;// Distance to nearest hit

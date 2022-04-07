@@ -33,15 +33,15 @@ namespace raylib_beef
 
 		[CLink]
 		/// Load font data for further use
-		public static extern CharInfo* LoadFontData(uint8* filedata, c_int datasize, c_int fontSize, c_int* fontChars, c_int charsCount, FontType type);
+		public static extern GlyphInfo* LoadFontData(uint8* filedata, c_int datasize, c_int fontSize, c_int* fontChars, c_int charsCount, FontType type);
 
 		[CLink]
 		/// Generate image font atlas using chars info
-		public static extern Image GenImageFontAtlas(CharInfo* chars, Rectangle** recs, c_int charsCount, c_int fontSize, c_int padding, c_int packMethod);
+		public static extern Image GenImageFontAtlas(GlyphInfo* chars, Rectangle** recs, c_int charsCount, c_int fontSize, c_int padding, c_int packMethod);
 
 		[CLink]
 		/// Unload font chars info data (RAM)
-		public static extern void UnloadFontData(CharInfo *chars, int charsCount);  
+		public static extern void UnloadFontData(GlyphInfo *chars, int charsCount);  
 
 		[CLink]
 		/// Unload Font from GPU memory (VRAM)
@@ -61,18 +61,14 @@ namespace raylib_beef
 		public static extern void DrawTextEx(Font font, char8* text, Vector2 position, float fontSize, float spacing, Color tint);
 
 		[CLink]
-		/// Draw text using font inside rectangle limits
-		public static extern void DrawTextRec(Font font, char8* text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint);
-
-		[CLink]
-		/// Draw text using font inside rectangle limits with support for text selection
-		public static extern void DrawTextRecEx(Font font, char8* text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, c_int selectStart, c_int selectLength, Color selectText, Color selectBack);
+		/// Draw text using Font and pro parameters (rotation)
+		public static extern void DrawTextPro(Font font, char8* text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint);
 
 		[CLink]
 		/// Draw one character (codepoint)
 		public static extern void DrawTextCodepoint(Font font, c_int codepoint, Vector2 position, float scale, Color tint);
 
-		// Text misc. functions --------------------
+		// Text font info functions --------------------
 		[CLink]
 		/// Measure string width for default font
 		public static extern c_int MeasureText(char8* text, c_int fontSize);
@@ -82,10 +78,33 @@ namespace raylib_beef
 		public static extern Vector2 MeasureTextEx(Font font, char8* text, float fontSize, float spacing);/// Get index
 
 		[CLink]
-		// Text formatting with variables (sprintf style)
-		public static extern char8* TextFormat(char8* text, void* args);
+		/// Get glyph index position in font for a codepoint (unicode character), fallback to '?' if not found
+		public static extern c_int GetGlyphIndex(Font font, c_int codepoint);
 
-		
+		[CLink]
+		/// Get glyph font info data for a codepoint (unicode character), fallback to '?' if not found
+		public static extern GlyphInfo GetGlyphInfo(Font font, c_int codepoint);
+
+		[CLink]
+		public static extern Rectangle GetGlyphAtlasRec(Font font, int codepoint);
+
+
+
+		[CLink]
+		// Load all codepoints from a UTF-8 text string, codepoints count returned by parameter
+		public static extern c_int* LoadCodepoints(char8* text, int* count);
+
+		[CLink]
+		/// Unload codepoints data from memory
+		public static extern void UnloadCodepoints(c_int* codepoints);
+
+		[CLink]
+		/// Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
+		public static extern c_int GetCodepoint(char8* text,c_int* bytesProcessed);
+
+		[CLink]
+		/// Encode text as codepoints array into UTF-8 text string (WARNING: memory must be freed!)
+		public static extern char8* TextCodepointsToUTF8(c_int* codepoints, int length);
 
 	}
 }
