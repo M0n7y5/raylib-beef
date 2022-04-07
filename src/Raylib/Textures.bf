@@ -25,6 +25,14 @@ namespace raylib_beef
 		public static extern Image LoadImageFromMemory(char8* fileType, uint8* fileData, c_int dataSize);
 
 		[CLink]
+		/// Load image from GPU texture data
+		public static extern Image LoadImageFromTexture(Texture2D texture);
+
+		[CLink]
+		// Load image from screen buffer and (screenshot)
+		public static  extern Image LoadImageFromScreen();
+
+		[CLink]
 		/// Unload image from CPU memory (RAM)
 		public static extern void UnloadImage(Image image);
 
@@ -61,10 +69,6 @@ namespace raylib_beef
 		[CLink]
 		/// Generate image: white noise
 		public static extern Image GenImageWhiteNoise(c_int width, c_int height, float factor);
-
-		[CLink]
-		/// Generate image: perlin noise
-		public static extern Image GenImagePerlinNoise(c_int width, c_int height, c_int offsetX, c_int offsetY, float scale);
 
 		[CLink]
 		/// Generate image: cellular algorithm. Bigger tileSize means bigger cells
@@ -197,6 +201,10 @@ namespace raylib_beef
 		/// Get image alpha border rectangle
 		public static extern Rectangle GetImageAlphaBorder(Image image, float threshold);
 
+		[CLink]
+		/// Get image pixel color at (x, y) position
+		public static extern Color GetImageColor(Image image, c_int x, c_int y);
+
 
 		/// Image drawing functions NOTE: Image software-rendering functions (CPU)
 		[CLink]
@@ -292,14 +300,6 @@ namespace raylib_beef
 		[CLink]
 		/// Update GPU texture rectangle with new data
 		public static extern void UpdateTextureRec(Texture2D texture, Rectangle rec, void* pixels);
-
-		[CLink]
-		/// Get pixel data from GPU texture and return an Image
-		public static extern Image GetTextureData(Texture2D texture);
-
-		[CLink]
-		/// Get pixel data from screen buffer and return an Image (screenshot)
-		public static extern Image GetScreenData();
 
 
 		/// Texture configuration functions

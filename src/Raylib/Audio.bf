@@ -225,6 +225,10 @@ namespace raylib_beef
 		public static extern void SetAudioStreamPitch(AudioStream stream, float pitch);
 
 		[CLink]
+		/// Seek music to a position (in seconds)
+		public static extern void SeekMusicStream(Music music, float position);
+
+		[CLink]
 		/// Default size for new audio streams
 		public static extern void SetAudioStreamBufferSizeDefault(int size); 
 

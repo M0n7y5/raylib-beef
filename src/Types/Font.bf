@@ -15,6 +15,6 @@ namespace raylib_beef.Types
 		public Rectangle* recs;// Characters rectangles in texture
 
 		// chars refers to a CharInfo *
-		public CharInfo* chars;// Characters info data
+		public GlyphInfo* chars;// Characters info data
 	}
 }

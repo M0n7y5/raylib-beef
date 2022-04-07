@@ -41,6 +41,10 @@ namespace raylib_beef
 		public static extern void DrawLineBezierQuad(Vector2 startPos, Vector2 endPos, Vector2 controlPos, float thick, Color color);
 
 		[CLink]
+		/// Draw line using cubic bezier curves with 2 control points
+		public static extern void DrawLineBezierCubic(Vector2 startPos, Vector2 endPos, Vector2 startControlPos, Vector2 endControlPos, float thick, Color color);
+
+		[CLink]
 		/// Draw lines sequence
 		public static extern void DrawLineStrip(Vector2* points, c_uint numPoints, Color color);
 
@@ -152,6 +156,10 @@ namespace raylib_beef
 		/// Draw a polygon outline of n sides
 		public static extern void DrawPolyLines(Vector2 center, c_int sides, float radius, float rotation, Color color);
 
+		[CLink]
+		/// Draw a polygon outline of n sides with extended parameters
+		public static extern void DrawPolyLines(Vector2 center, c_int sides, float radius, float rotation,float lineThick, Color color);
+
 
 		// Basic shapes collision detection functions --------------------------
 		[CLink]
@@ -182,6 +190,9 @@ namespace raylib_beef
 		/// Check the collision between two lines defined by two points each, returns collision point by reference
 		public static extern bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 *collisionPoint);
 
+		[CLink]
+		/// Check if point belongs to line created between two points [p1] and [p2] with defined margin in pixels [threshold]
+		public static extern bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int threshold);
 
 		[CLink]
 		/// Get collision rectangle for two rectangles collision

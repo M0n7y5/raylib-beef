@@ -19,10 +19,6 @@ namespace raylib_beef
 		public static extern c_int GetGestureDetected();
 
 		[CLink]
-		/// Get touch points count
-		public static extern c_int GetTouchPointsCount();
-
-		[CLink]
 		/// Get gesture hold time in milliseconds
 		public static extern float GetGestureHoldDuration();
 

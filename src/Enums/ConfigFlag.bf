@@ -1,7 +1,7 @@
 using System.Interop;
 namespace raylib_beef.Enums
 {
-	public enum ConfigFlag : c_int
+	public enum ConfigFlag : c_uint
 	{
 		FLAG_VSYNC_HINT = 0x00000040,// Set to try enabling V-Sync on GPU
 		FLAG_FULLSCREEN_MODE = 0x00000002,// Set to run program in fullscreen

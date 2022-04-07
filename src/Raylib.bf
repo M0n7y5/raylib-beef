@@ -6,8 +6,9 @@ namespace raylib_beef
 {
 	public class Raylib
 	{
-		public const char8* RAYLIB_VERSION = "3.7";
+		public const char8* RAYLIB_VERSION = "4.0";
 
+		public const float PI = 3.14159265358979323846f;
 		public const float DEG2RAD = Math.PI_f / 180.0f;
 		public const float RAD2DEG = 180.0f / Math.PI_f;
 

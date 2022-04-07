@@ -43,10 +43,6 @@ namespace raylib_beef
 		public static extern bool IsGamepadAvailable(GamepadNumber gamepad);
 
 		[CLink]
-		/// Check gamepad name (if available)
-		public static extern bool IsGamepadName(GamepadNumber gamepad, char8* name);
-
-		[CLink]
 		/// Return gamepad internal name id
 		public static extern char8* GetGamepadName(GamepadNumber gamepad);
 
@@ -112,6 +108,10 @@ namespace raylib_beef
 		public static extern Vector2 GetMousePosition();
 
 		[CLink]
+		/// Get mouse delta between frames
+		public static extern Vector2 GetMouseDelta();
+
+		[CLink]
 		/// Set mouse position XY
 		public static extern void SetMousePosition(c_int x, c_int y);
 
@@ -144,5 +144,13 @@ namespace raylib_beef
 		[CLink]
 		/// Returns touch position XY for a touch point index (relative to screen size)
 		public static extern Vector2 GetTouchPosition(c_int index);
+
+		[CLink]
+		/// Get touch point identifier for given index
+		public static extern c_int GetTouchPointId(c_int index);
+
+		[CLink]
+		/// GEt number of touch points
+		public static extern c_int GetTouchPointCount();
 	}
 }

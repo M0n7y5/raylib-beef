@@ -13,6 +13,11 @@ namespace raylib_beef
 		public static extern c_int GetRandomValue(c_int min, c_int max);
 
 		[CLink]
+		/// Sets
+		// the seed for the random number generator
+		public static extern void SetRandomSeed(c_uint seed);
+
+		[CLink]
 		/// Takes
 		// a screenshot of current screen (saved a .png)
 		public static extern void TakeScreenshot(char8* fileName);

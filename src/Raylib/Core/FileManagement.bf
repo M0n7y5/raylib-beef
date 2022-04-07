@@ -99,5 +99,13 @@ namespace raylib_beef
 		[CLink]
 		/// Decompress data (DEFLATE algorithm)
 		public static extern uint8* DecompressData(uint8* compData, c_int compDataLength, c_int* dataLength);
+
+		[CLink]
+		/// Encode data to Base64 string
+		public static extern uint8* EncodeDataBase64(uint8* data, c_int dataLength, c_int* outputlength);
+
+		[CLink]
+		/// Decode Base64 string data
+		public static extern uint8* DecodeDataBase64(uint8* data, c_int* outputLength);
 	}
 }
